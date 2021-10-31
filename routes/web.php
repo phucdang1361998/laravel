@@ -2,9 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\CategoryControler;
+use App\Http\Controllers\admin\ProductAdminController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\AboutAdminController;
+use App\Http\Controllers\admin\ContactAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,28 +24,51 @@ use App\Http\Controllers\admin\CategoryControler;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('clients.index');
+Route::get('/product', [ProductController::class, 'index'])->name('clients.product.index');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('clients.product.detail');
+Route::get('/about', [AboutController::class, 'index'])->name('clients.about.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('clients.contact.index');
+Route::get('/shopping-cart', [ShoppingCartController::class, 'index'])->name('clients.shopping-cart.index');
 
 Route::prefix('store-admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.home');
     Route::post('/', [AdminController::class, 'login'])->name('login');
 
     Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
-        Route::get('insert', [ProductController::class, 'create'])->name('admin.product.create');
-        Route::post('insert-product', [ProductController::class, 'store'])->name('admin.product.store');
-        Route::get('update/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
-        Route::post('update-product/{id}', [ProductController::class, 'update'])->name('admin.product.update');
-        Route::get('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+        Route::get('/', [ProductAdminController::class, 'index'])->name('admin.product.index');
+        Route::get('insert', [ProductAdminController::class, 'create'])->name('admin.product.create');
+        Route::post('insert-product', [ProductAdminController::class, 'store'])->name('admin.product.store');
+        Route::get('update/{id}', [ProductAdminController::class, 'edit'])->name('admin.product.edit');
+        Route::post('update-product/{id}', [ProductAdminController::class, 'update'])->name('admin.product.update');
+        Route::get('delete/{id}', [ProductAdminController::class, 'delete'])->name('admin.product.delete');
     });
 
     Route::prefix('category')->group(function () {
-        Route::get('/', [CategoryController::class, 'delete'])->name('admin.category.index');
-        Route::get('insert', 'CategoryController@create')->name('admin.category.create');
-        Route::post('insert-category', 'CategoryController@createPost')->name('admin.category.create-post');
-        Route::get('update/{id}', 'CategoryController@update')->name('admin.category.update');
-        Route::post('update-category/{id}', 'CategoryController@updatePost')->name('admin.category.update-post');
-        Route::get('delete/{id}', 'CategoryController@destroy')->name('admin.category.delete');
+        Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('insert', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('insert-category', [CategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('update/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::post('update-category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+        Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+    });
+
+    Route::prefix('about')->group(function () {
+        Route::get('/', [AboutAdminController::class, 'index'])->name('admin.category.index');
+        Route::get('insert', [AboutAdminController::class, 'create'])->name('admin.category.create');
+        Route::post('insert-category', [AboutAdminController::class, 'store'])->name('admin.category.store');
+        Route::get('update/{id}', [AboutAdminController::class, 'edit'])->name('admin.category.edit');
+        Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.category.update');
+        Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.category.delete');
+    });
+
+    Route::prefix('contact')->group(function () {
+        Route::get('/', [ContactAdminController::class, 'index'])->name('admin.category.index');
+        Route::get('insert', [ContactAdminController::class, 'create'])->name('admin.category.create');
+        Route::post('insert-category', [ContactAdminController::class, 'store'])->name('admin.category.store');
+        Route::get('update/{id}', [ContactAdminController::class, 'edit'])->name('admin.category.edit');
+        Route::post('update-category/{id}', [ContactAdminController::class, 'update'])->name('admin.category.update');
+        Route::get('delete/{id}', [ContactAdminController::class, 'delete'])->name('admin.category.delete');
     });
 });
 

@@ -61,14 +61,5 @@ Route::prefix('store-admin')->group(function () {
         Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.category.update');
         Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.category.delete');
     });
-
-    Route::prefix('contact')->group(function () {
-        Route::get('/', [ContactAdminController::class, 'index'])->name('admin.category.index');
-        Route::get('insert', [ContactAdminController::class, 'create'])->name('admin.category.create');
-        Route::post('insert-category', [ContactAdminController::class, 'store'])->name('admin.category.store');
-        Route::get('update/{id}', [ContactAdminController::class, 'edit'])->name('admin.category.edit');
-        Route::post('update-category/{id}', [ContactAdminController::class, 'update'])->name('admin.category.update');
-        Route::get('delete/{id}', [ContactAdminController::class, 'delete'])->name('admin.category.delete');
-    });
 });
 

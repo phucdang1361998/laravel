@@ -1,4 +1,4 @@
-
+<?php $routeName = \Request::route() ? \Request::route()->getName() : ''; ?>
 <header class="header-v4">
     <!-- Header desktop -->
     <div class="container-menu-desktop">
@@ -9,35 +9,61 @@
 
                 <!-- Logo desktop -->
                 <a href="{{route('clients.index')}}" class="logo">
-                    <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+                    <img src="{{asset('images/icons/logo-01.png')}}" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li>
-                            <a href="{{route('clients.index')}}">Trang chủ</a>
-                        </li>
+                        @if($routeName=='clients.index')
+                            <li class="active-menu">
+                                <a href="{{route('clients.index')}}">Trang chủ</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('clients.index')}}">Trang chủ</a>
+                            </li>
+                        @endif
 
-                        <li class="active-menu">
-                            <a href="{{route('clients.product.index')}}">Sản phẩm</a>
-                        </li>
+                        @if($routeName=='clients.product.index' || $routeName=='clients.product.detail')
+                            <li class="active-menu">
+                                <a href="{{route('clients.product.index')}}">Sản phẩm</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('clients.product.index')}}">Sản phẩm</a>
+                            </li>
+                        @endif
 
-                        <li class="label1" data-label1="hot">
-                            <a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a>
-                        </li>
+                        @if($routeName=='clients.shopping-cart.index' || $routeName=='clients.shopping-cart.detail')
+                            <li class="active-menu">
+                                <a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a>
+                            </li>
+                        @endif
 
-{{--                        <li>--}}
-{{--                            <a href="{{route('clients.blog.index')}}">Bài viết</a>--}}
-{{--                        </li>--}}
+                        @if($routeName=='clients.about.index')
+                            <li class="active-menu">
+                                <a href="{{route('clients.about.index')}}">Giới thiệu</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('clients.about.index')}}">Giới thiệu</a>
+                            </li>
+                        @endif
 
-                        <li>
-                            <a href="{{route('clients.about.index')}}">Giới thiệu</a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('clients.contact.index')}}">Liên hệ</a>
-                        </li>
+                        @if($routeName=='clients.contact.index')
+                            <li class="active-menu">
+                                <a href="{{route('clients.contact.index')}}">Liên hệ</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{route('clients.contact.index')}}">Liên hệ</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
 
@@ -47,13 +73,10 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                         data-notify="2">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
-
-                    <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-                        <i class="zmdi zmdi-favorite-outline"></i>
-                    </a>
                 </div>
             </nav>
         </div>
@@ -72,11 +95,13 @@
                 <i class="zmdi zmdi-search"></i>
             </div>
 
-            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                 data-notify="2">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
 
-            <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+            <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+               data-notify="0">
                 <i class="zmdi zmdi-favorite-outline"></i>
             </a>
         </div>
@@ -105,9 +130,9 @@
                 <a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a>
             </li>
 
-{{--            <li>--}}
-{{--                <a href="{{route('clients.blog.index')}}">Bài viết</a>--}}
-{{--            </li>--}}
+            {{--            <li>--}}
+            {{--                <a href="{{route('clients.blog.index')}}">Bài viết</a>--}}
+            {{--            </li>--}}
 
             <li>
                 <a href="{{route('clients.about.index')}}">Giới thiệu</a>

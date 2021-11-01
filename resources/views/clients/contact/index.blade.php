@@ -4,7 +4,36 @@
     <title>Contact</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @extends('clients.link-css')
+
+    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+
+    {{--	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">--}}
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+
 </head>
 <body class="animsition">
 
@@ -137,11 +166,11 @@
 
                     <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Address
+								Địa chỉ
 							</span>
 
                         <p class="stext-115 cl6 size-213 p-t-18">
-                            Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                            Số 1 khu phố Bình Hòa, phường Lái Thiêu, Thuận An, Bình Dương
                         </p>
                     </div>
                 </div>
@@ -153,7 +182,7 @@
 
                     <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Lets Talk
+								Số điện thoại
 							</span>
 
                         <p class="stext-115 cl1 size-213 p-t-18">
@@ -169,11 +198,11 @@
 
                     <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Sale Support
+								Email
 							</span>
 
                         <p class="stext-115 cl1 size-213 p-t-18">
-                            contact@example.com
+                            mapmapstore@gmail.com
                         </p>
                     </div>
                 </div>
@@ -207,6 +236,27 @@
         });
     })
 </script>
+<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+
+<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+
+<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+
+<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
+<script src="{{asset('js/slick-custom.js')}}"></script>
+
+<script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
+<script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
+
+<script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
+<script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 <script>
     $('.js-pscroll').each(function(){
         $(this).css('position','relative');

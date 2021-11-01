@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\About;
 
 class AboutController extends Controller
 {
 
     public function index()
     {
-        return view('clients.about.index');
+        $about = About::all();
+        return view('clients.about.index', ['about' => $about]);
     }
 
     public function show($id)

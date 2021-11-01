@@ -11,9 +11,9 @@ class ProductController extends Controller
 
     public function index()
     {
-        $category = Category::all()->toArray();
+        $category = Category::all();
 
-        $product = Product::all()->toArray();
+        $product = Product::all();
 
         return view('clients.product.index', [
             'category' => $category,
@@ -24,10 +24,15 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::where('id', $id)->first();
+        $relative = Product::where([
+            'product_type_id' => $product['product_type_id'],
+            ['id', '<>', $id]
+        ])->get();
         $category = Category::all()->toArray();
         return view('clients.product.detail', [
             'product'  => $product,
-            'category' => $category
+            'category' => $category,
+            'relative' => $relative
         ]);
     }
 }

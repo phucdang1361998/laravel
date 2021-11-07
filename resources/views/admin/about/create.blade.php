@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Chỉnh sửa giới thiệu
+                            Thêm giới thiệu
                         </header>
                         @if(isset($message))
                             <td>
@@ -19,22 +19,19 @@
                         <div class="panel-body">
                             <div class="position-center">
                                 <form method="POST" enctype="multipart/form-data"
-                                      action="{{route('admin.about.update', ['id' => $about['id']])}}">
+                                      action="{{route('admin.about.create')}}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="title"
-                                               value="{{$about['title']}}">
+                                        <input type="text" class="form-control" name="title">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Hình ảnh</label>
                                         <input type="file" class="form-control" name="image"/>
-                                        <img src="{{asset($about['image'])}}" style="width: 100px" alt="">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Nội dung</label>
-                                        <input type="text" class="form-control" name="description"
-                                               value="{{$about['description']}}">
+                                        <input type="text" class="form-control" name="description">
                                     </div>
                                     <button type="submit" class="btn btn-info">Lưu</button>
                                 </form>

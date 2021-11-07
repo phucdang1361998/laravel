@@ -160,7 +160,7 @@
             <!-- Search product -->
             <div class="dis-none panel-search w-full">
                 <div class="bor8 dis-flex p-l-15">
-                    <form class="form flex-b" method="GET" action="{{route('clients.product.index')}}">
+                    <form class="form flex-b col-12" method="GET" action="{{route('clients.product.index')}}">
                         <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit"><i
                                 class="zmdi zmdi-search"></i></button>
                         <input class="mtext-107 cl2 size-114 plh2 p-r-15"

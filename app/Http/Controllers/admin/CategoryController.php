@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -16,18 +17,29 @@ class CategoryController extends Controller
         $this->model = new Category();
     }
 
+    public function Auth()
+    {
+        $admin = Session::get('admin_id');
+        if ($admin) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->route('admin.home')->send();
+        }
+    }
+
     public function index(Request $request)
     {
+        $this->Auth();
         $category = Category::select('*')->get();
         return view('admin.category.index', [
             'category' => $category,
-            'name'     => $request->all()['name']
         ]);
     }
 
 
     public function create(Request $request)
     {
+        $this->Auth();
         return view('admin.category.create', [
             'message' => isset($request->all()['message']) ? $request->all()['message'] : ''
         ]);
@@ -35,11 +47,11 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $this->Auth();
         $attributes = $request->all();
         try {
             DB::beginTransaction();
             $param = [
-                'name' => $attributes['name'],
                 'code' => $attributes['code'],
             ];
 
@@ -49,7 +61,6 @@ class CategoryController extends Controller
             DB::rollBack();
             return redirect()->route('admin.category.create', [
                 'message' => ERROR,
-                'name'    => 'phuc'
             ]);
         }
 
@@ -58,16 +69,17 @@ class CategoryController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $this->Auth();
         $category = $this->model->find($id);
         return view('admin.category.update', [
             'category' => $category,
-            'name'     => 'phuc',
             'message'  => isset($request->all()['message']) ? $request->all()['message'] : ''
         ]);
     }
 
     public function update(Request $request, $id)
     {
+        $this->Auth();
         $attributes = $request->all();
 
         $category = $this->model->find($id);
@@ -84,7 +96,6 @@ class CategoryController extends Controller
             DB::rollBack();
             return redirect()->route('admin.category.edit', [
                 'message' => ERROR,
-                'name'    => 'phuc',
                 'id'      => $id
             ]);
         }
@@ -94,6 +105,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        $this->Auth();
         $category = $this->model->find($id);
         $category->delete();
     }

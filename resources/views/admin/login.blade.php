@@ -18,6 +18,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
     <div class="w3layouts-main">
         <h2>ĐĂNG NHẬP</h2>
+        <?php
+        $message = \Illuminate\Support\Facades\Session::get('message');
+        ?>
+        @if($message)
+            <tr>
+                <td>
+                    {{$message}}
+                </td>
+            </tr>
+        @endif
         <form action="{{route('login')}}" method="post">
             @csrf
             <input type="email" class="ggg" name="email" placeholder="E-MAIL" required>

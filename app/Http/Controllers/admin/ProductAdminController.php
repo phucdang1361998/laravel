@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
 
 class ProductAdminController extends Controller
@@ -21,23 +22,33 @@ class ProductAdminController extends Controller
         $this->model = new Product();
     }
 
-    public function index(Request $request)
+    public function Auth()
     {
+        $admin = Session::get('admin_id');
+        if ($admin) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->route('admin.home')->send();
+        }
+    }
+
+    public function index()
+    {
+        $this->Auth();
         $product = $this->model->select('*')->paginate(15);
 
         return view('admin.product.index', [
             'product' => $product,
-            'name'    => $request->all()['name']
         ]);
     }
 
 
     public function create(Request $request)
     {
+        $this->Auth();
         $category = Category::all();
 
         return view('admin.product.create', [
-            'name'     => $request->all()['name'],
             'category' => $category,
             'message'  => isset($request->all()['message']) ? $request->all()['message'] : ''
         ]);
@@ -45,6 +56,7 @@ class ProductAdminController extends Controller
 
     public function store(Request $request)
     {
+        $this->Auth();
         $attributes = $request->all();
 
         try {
@@ -76,7 +88,6 @@ class ProductAdminController extends Controller
             DB::rollBack();
             return redirect()->route('admin.product.create', [
                 'message' => ERROR,
-                'name'    => 'phuc',
             ]);
         }
 
@@ -85,11 +96,11 @@ class ProductAdminController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $this->Auth();
         $product = $this->model->find($id);
         $category = Category::all();
         return view('admin.product.update', [
             'product'  => $product,
-            'name'     => 'phuc',
             'category' => $category,
             'message'  => isset($request->all()['message']) ? $request->all()['message'] : ''
         ]);
@@ -97,6 +108,7 @@ class ProductAdminController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->Auth();
         $attributes = $request->all();
         $attributes['price'] = str_replace(',', '', $attributes['price']);
         $product = $this->model->find($id);
@@ -133,7 +145,6 @@ class ProductAdminController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin.product.edit', [
                 'message' => ERROR,
-                'name'    => 'phuc',
                 'id'      => $id
             ]);
             DB::rollBack();
@@ -144,6 +155,7 @@ class ProductAdminController extends Controller
 
     public function delete($id)
     {
+        $this->Auth();
         $product = $this->model->find($id);
         File::delete(public_path($product['image']));
         $product->delete();

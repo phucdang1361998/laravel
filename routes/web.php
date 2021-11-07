@@ -33,7 +33,9 @@ Route::get('/shopping-cart', [ShoppingCartController::class, 'index'])->name('cl
 
 Route::prefix('store-admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/', [AdminController::class, 'login'])->name('login');
+    Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
     Route::prefix('product')->group(function () {
         Route::get('/', [ProductAdminController::class, 'index'])->name('admin.product.index');

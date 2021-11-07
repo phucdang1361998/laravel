@@ -39,11 +39,11 @@
                                         <input type="text" class="form-control" name="price">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Giảm giá</label><br>
+                                        <label>Giảm giá</label><br>
                                         <input type="radio" id="vehicle1" name="sale_off" value="1">
-                                        <label for="vehicle1">Có</label><br>
+                                        <label>Có</label><br>
                                         <input type="radio" id="vehicle1" name="sale_off" value="0">
-                                        <label for="vehicle1">Không</label><br>
+                                        <label>Không</label><br>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Giá giảm</label>
@@ -57,7 +57,7 @@
                                         <label>Hình ảnh</label>
                                         <input type="file" name="image">
                                     </div>
-                                    <button type="submit" class="btn btn-info">Submit</button>
+                                    <button type="submit" class="btn btn-info">Lưu</button>
                                 </form>
                             </div>
                         </div>

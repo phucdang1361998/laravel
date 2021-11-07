@@ -1,3 +1,6 @@
+<?php
+$name = \Illuminate\Support\Facades\Session::get('admin_name');
+?>
 <!DOCTYPE html>
 <head>
     <title>Admin</title>
@@ -31,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
-            <a href="index.html" class="logo">
+            <a href="{{route('admin.home')}}" class="logo">
                 Quản trị
             </a>
             <div class="sidebar-toggle-box">
@@ -55,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="{{route('login')}}"><i class="fa fa-key"></i> Log Out</a></li>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Log Out</a></li>
                     </ul>
                 </li>
                 <!-- user login dropdown end -->
@@ -78,40 +81,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
                     <li>
-                        <a class="active" href="{{route('admin.about.index',['name'=> $name])}}">
+                        <a class="active" href="{{route('admin.about.index')}}">
                             <i class="fa fa-dashboard"></i>
                             <span>Giới thiệu</span>
                         </a>
+                        <ul>
+                            <li>
+                                <a class="active" href="{{route('admin.about.create')}}">
+                                    <span>Thêm bài giới thiệu</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active" href="{{route('admin.about.index')}}">
+                                    <span>Xem bài giới thiệu</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a class="active" href="{{route('admin.product.index',['name'=> $name])}}">
+                        <a class="active" href="{{route('admin.product.index')}}">
                             <i class="fa fa-dashboard"></i>
                             <span>Quản lý sản phẩm</span>
                         </a>
                         <ul>
                             <li>
-                                <a class="active" href="{{route('admin.product.create',['name'=> $name])}}">
+                                <a class="active" href="{{route('admin.product.create')}}">
                                     <span>Thêm sản phẩm</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="active" href="{{route('admin.product.index',['name'=> $name])}}">
+                                <a class="active" href="{{route('admin.product.index')}}">
                                     <span>Xem sản phẩm</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a class="active" href="{{route('admin.category.index',['name'=> $name])}}">
+                        <a class="active" href="{{route('admin.category.index')}}">
                             <i class="fa fa-dashboard"></i>
                             <span>Quản lý danh mục sản phẩm</span>
                         </a>
+                        <ul>
+                            <li>
+                                <a class="active" href="{{route('admin.category.create')}}">
+                                    <span>Thêm danh mục sản phẩm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active" href="{{route('admin.category.index')}}">
+                                    <span>Xem danh mục sản phẩm</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a class="active" href="{{route('admin.category.index',['name'=> $name])}}">
+                        <a class="active" href="{{route('admin.category.index')}}">
                             <i class="fa fa-dashboard"></i>
                             <span>Slider</span>
                         </a>
+                        <ul>
+                            <li>
+                                <a class="active" href="{{route('admin.category.create')}}">
+                                    <span>Thêm slider</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active" href="{{route('admin.category.index')}}">
+                                    <span>Xem slider</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

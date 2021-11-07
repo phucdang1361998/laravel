@@ -4,9 +4,12 @@
     <section class="wrapper">
         <div class="table-agile-info">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Quản lý sản phẩm
-                </div>
+                <tr>
+                    <div class="panel-heading">
+                        Quản lý sản phẩm
+                    </div>
+                </tr>
+
                 <div>
                     <table class="table" ui-jq="footable" ui-options='{
         "paging": {
@@ -44,14 +47,17 @@
                                 <td>{{$detail['description']}}</td>
                                 <td>
                                     @include('admin.forms.btn-edit', ['route' => 'admin.product.edit', 'id' => $detail->id])
-                                    @include('admin.forms.btn-delete', ['route' => 'admin.product.delete', 'id' => $detail->id])
+                                    <a onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"
+                                       style="color: #ea4335"
+                                       href="{{route('admin.product.delete',['id' => $detail->id])}}"><i
+                                            class="fas fa-fw fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div class="row">{{ $product->links('vendor.pagination.default',['name' => $name]) }}</div>
+                <div class="row">{{ $product->links('vendor.pagination.default') }}</div>
             </div>
         </div>
     </section>

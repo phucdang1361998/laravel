@@ -36,7 +36,10 @@
                                 <td>{{$detail['description']}}</td>
                                 <td>
                                     @include('admin.forms.btn-edit', ['route' => 'admin.about.edit', 'id' => $detail->id])
-                                    @include('admin.forms.btn-delete', ['route' => 'admin.about.delete', 'id' => $detail->id])
+                                    <a onclick="return confirm('Bạn có chắc muốn xóa bài giới thiệu này không?')"
+                                       style="color: #ea4335"
+                                       href="{{route('admin.about.delete',['id' => $detail->id])}}"><i
+                                            class="fas fa-fw fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -34,7 +34,10 @@
                                 <td>{{$detail['code']}}</td>
                                 <td>
                                     @include('admin.forms.btn-edit', ['route' => 'admin.category.edit', 'id' => $detail->id])
-                                    @include('admin.forms.btn-delete', ['route' => 'admin.category.delete', 'id' => $detail->id])
+                                    <a onclick="return confirm('Bạn có chắc muốn xóa danh mục sản phẩm này không?')"
+                                       style="color: #ea4335"
+                                       href="{{route('admin.category.delete',['id' => $detail->id])}}"><i
+                                            class="fas fa-fw fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -10,4 +10,8 @@ class About extends Model
     use HasFactory;
 
     protected $table = 'about';
+
+    protected $guarded = [];
+
+    const IMAGE_PATH = 'images/about/';
 }

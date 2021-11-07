@@ -54,12 +54,12 @@ Route::prefix('store-admin')->group(function () {
     });
 
     Route::prefix('about')->group(function () {
-        Route::get('/', [AboutAdminController::class, 'index'])->name('admin.category.index');
-        Route::get('insert', [AboutAdminController::class, 'create'])->name('admin.category.create');
-        Route::post('insert-category', [AboutAdminController::class, 'store'])->name('admin.category.store');
-        Route::get('update/{id}', [AboutAdminController::class, 'edit'])->name('admin.category.edit');
-        Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.category.update');
-        Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.category.delete');
+        Route::get('/', [AboutAdminController::class, 'index'])->name('admin.about.index');
+        Route::get('insert', [AboutAdminController::class, 'create'])->name('admin.about.create');
+        Route::post('insert-category', [AboutAdminController::class, 'store'])->name('admin.about.store');
+        Route::get('update/{id}', [AboutAdminController::class, 'edit'])->name('admin.about.edit');
+        Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.about.update');
+        Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.about.delete');
     });
 });
 

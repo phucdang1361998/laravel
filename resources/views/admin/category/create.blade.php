@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Chỉnh sửa giới thiệu
+                            Thêm mới loại sản phẩm
                         </header>
                         @if(isset($message))
                             <td>
@@ -18,23 +18,15 @@
                         @endif
                         <div class="panel-body">
                             <div class="position-center">
-                                <form method="POST" enctype="multipart/form-data"
-                                      action="{{route('admin.about.update', ['id' => $about['id']])}}">
+                                <form method="POST" action="{{route('admin.category.store')}}">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="title"
-                                               value="{{$about['title']}}">
+                                        <label for="exampleInputEmail1">Tên loại sản phẩm</label>
+                                        <input type="text" class="form-control" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tiêu đề</label>
-                                        <input type="file" class="form-control" name="image"/>
-                                        <img src="{{asset($about['image'])}}" style="width: 100px" alt="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Nội dung</label>
-                                        <input type="text" class="form-control" name="description"
-                                               value="{{$about['description']}}">
+                                        <label for="exampleInputPassword1">Mã loại sản phẩm</label>
+                                        <input type="text" class="form-control" name="code">
                                     </div>
                                     <button type="submit" class="btn btn-info">Lưu</button>
                                 </form>

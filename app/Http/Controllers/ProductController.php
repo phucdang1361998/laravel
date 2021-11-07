@@ -9,15 +9,27 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $attributes = $request->all();
         $category = Category::all();
 
-        $product = Product::all();
+        $product = Product::query();
+        if (!empty($attributes)) {
+            if (isset($attributes['name'])) {
+                $product->where('name', 'like', '%' . $attributes['name'] . '%');
+            }
+
+            if (isset($attributes['sort'])) {
+                foreach ($attributes['sort'] as $key => $value) {
+                    $product->orderBy($key, $value);
+                }
+            }
+        }
 
         return view('clients.product.index', [
             'category' => $category,
-            'product'  => $product,
+            'product'  => $product->get(),
         ]);
     }
 

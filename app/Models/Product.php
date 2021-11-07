@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
-
     protected $table = 'product';
+
+    protected $guarded = [];
+
+    const IMAGE_PATH = 'images/product/';
 
     public function type()
     {
-        return $this->belongsTo(Category::class,'product_type_id','id');
+        return $this->belongsTo(Category::class, 'product_type_id', 'id');
     }
 }

@@ -2080,6 +2080,7 @@ input.num-product::-webkit-inner-spin-button {
 [ Block2 ]*/
 .block2-pic {
     position: relative;
+    max-height: 390px;
 }
 
 .block2-btn {

@@ -1,46 +1,58 @@
+@extends('admin.index')
 
-
-    <div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3" style="display: flex; padding-top: 10px !important; padding-bottom: 10px !important;">
-                <div class="col-sm-12 col-md-6" style="padding-top: 7px;">
-                    <h6 class="m-0 font-weight-bold text-primary">Danh Sách Sản phẩm</h6>
+@section('content')
+    <section class="wrapper">
+        <div class="table-agile-info">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Quản lý sản phẩm
                 </div>
-                {{--<div class="col-sm-12 col-md-6 dataTables_filter" style="text-align: right;">
-                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('admin.category.create-view')}}">Thêm Mới</a>
-                </div>--}}
-            </div>
-            <div class="card-body table-responsive">
-                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                <thead>
-                                <tr role="row">
-                                    <th style="width: 50px;">Tên sản phẩm</th>
-                                    <th style="width: 50px;">Mã sản phẩm</th>
-                                    <th style="width: 50px;">Loại sản phẩm</th>
-                                    <th style="width: 120px;">Hình ảnh</th>
-                                    <th style="width: 80px;">Giá</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($data as $item)
-                                    <tr>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->code}}</td>
-                                        <td>{{$item->image}}</td>
-                                        <td>{{$item->product_type_id}}</td>
-                                        <td>{{$item->price}}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
+                <div>
+                    <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+                        <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Hình ảnh</th>
+                            <th>Giảm giá</th>
+                            <th>Giá giảm</th>
+                            <th>Mô tả</th>
+                            <th>Hành động</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($product as $key => $detail)
+                            <tr data-expanded="true">
+                                <td>{{$detail['name']}}</td>
+                                <td>{{$detail['code']}}</td>
+                                <td>{{$detail->type->name}}</td>
+                                <td>{{number_format($detail['price'])}}</td>
+                                <td><img src="{{asset($detail['image'])}}" style="width: 100px; border: 1px solid"></td>
+                                <td>{{$detail['sale_off'] == 0 ? 'không' : 'có'}}</td>
+                                <td>{{$detail['price_sale'] ? number_format($detail['price_sale']) : null}}</td>
+                                <td>{{$detail['description']}}</td>
+                                <td>
+                                    @include('admin.forms.btn-edit', ['route' => 'admin.product.edit', 'id' => $detail->id])
+                                    @include('admin.forms.btn-delete', ['route' => 'admin.product.delete', 'id' => $detail->id])
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                <div class="row">{{ $product->links('vendor.pagination.default',['name' => $name]) }}</div>
             </div>
         </div>
-    </div>
-
+    </section>
+@endsection

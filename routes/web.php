@@ -63,5 +63,15 @@ Route::prefix('store-admin')->group(function () {
         Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.about.update');
         Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.about.delete');
     });
+
+    Route::prefix('slider')->group(function () {
+        Route::get('/', [AboutAdminController::class, 'index'])->name('admin.slider.index');
+        Route::get('insert', [AboutAdminController::class, 'create'])->name('admin.slider.create');
+        Route::post('insert-category', [AboutAdminController::class, 'store'])->name('admin.slider.store');
+        Route::get('update/{id}', [AboutAdminController::class, 'edit'])->name('admin.slider.edit');
+        Route::post('update-category/{id}', [AboutAdminController::class, 'update'])->name('admin.slider.update');
+        Route::get('delete/{id}', [AboutAdminController::class, 'delete'])->name('admin.slider.delete');
+    });
+
 });
 

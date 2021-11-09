@@ -130,6 +130,7 @@ class AboutAdminController extends Controller
 
             DB::commit();
         } catch (\Exception $e) {
+            dd($e);
             DB::rollBack();
             return redirect()->route('admin.about.edit', [
                 'message' => ERROR,

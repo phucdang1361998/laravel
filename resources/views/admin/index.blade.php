@@ -1,262 +1,314 @@
-<?php
-$name = \Illuminate\Support\Facades\Session::get('admin_name');
-?>
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        } </script>
-    <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
-    <!-- //bootstrap-css -->
-    <!-- Custom CSS -->
-    <link href="{{asset('admin/css/style.css')}}" rel='stylesheet' type='text/css'/>
-    <link href="{{asset('admin/css/style-responsive.css')}}" rel="stylesheet"/>
-    <!-- font CSS -->
-    <link
-        href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
-        rel='stylesheet' type='text/css'>
-    <!-- font-awesome icons -->
-    <link rel="stylesheet" href="{{asset('admin/css/font.css')}}" type="text/css"/>
-    <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet">
+    <title>Home - My Admin Template</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{{asset('admin/styles/style.min.css')}}">
+
+    <!-- Material Design Icon -->
+    <link rel="stylesheet" href="{{asset('admin/fonts/material-design/css/materialdesignicons.css')}}">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="{{asset('admin/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css')}}">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="{{asset('admin/plugin/waves/waves.min.css')}}">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{asset('admin/plugin/sweet-alert/sweetalert.css')}}">
+
+    <!-- Morris Chart -->
+    <link rel="stylesheet" href="{{asset('admin/plugin/chart/morris/morris.css')}}">
+
+    <!-- FullCalendar -->
+    <link rel="stylesheet" href="{{asset('admin/plugin/fullcalendar/fullcalendar.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugin/fullcalendar/fullcalendar.print.css')}}" media='print'>
+    <link rel="stylesheet" href="{{asset('admin/plugin/tinymce/skins/lightgray/skin.min.css')}}">
 </head>
+
 <body>
-<section id="container">
-    <!--header start-->
-    <header class="header fixed-top clearfix">
-        <!--logo start-->
-        <div class="brand">
-            <a href="{{route('admin.home')}}" class="logo">
-                Quản trị
-            </a>
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars"></div>
+<div class="main-menu">
+    <header class="header">
+        <a href="index.html" class="logo"><i class="ico mdi mdi-cube-outline"></i>MyAdmin</a>
+        <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        <div class="user">
+            <a href="#" class="avatar"><img src="{{asset('admin/images/avatar-sm-5.jpg')}}" alt=""><span
+                    class="status online"></span></a>
+            <h5 class="name"><a href="profile.html">{{\Illuminate\Support\Facades\Session::get('admin_name')}}</a></h5>
+            <h5 class="position">Administrator</h5>
+            <!-- /.name -->
+            <div class="control-wrap js__drop_down">
+                <i class="fa fa-caret-down js__drop_down_button"></i>
+                <div class="control-list">
+                    <div class="control-item"><a href="profile.html"><i class="fa fa-user"></i> Profile</a></div>
+                    <div class="control-item"><a href="#"><i class="fa fa-gear"></i> Settings</a></div>
+                    <div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out</a></div>
+                </div>
+                <!-- /.control-list -->
             </div>
+            <!-- /.control-wrap -->
         </div>
-
-        <div class="top-nav clearfix">
-            <!--search & user info start-->
-            <ul class="nav pull-right top-menu">
-                <li>
-                    <input type="text" class="form-control search" placeholder=" Search">
-                </li>
-                <!-- user login dropdown start-->
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="images/2.png">
-                        <span class="username">{{$name}}</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Log Out</a></li>
-                    </ul>
-                </li>
-                <!-- user login dropdown end -->
-
-            </ul>
-            <!--search & user info end-->
-        </div>
+        <!-- /.user -->
     </header>
-    <!--header end-->
-    <!--sidebar start-->
-    <aside>
-        <div id="sidebar" class="nav-collapse">
-            <!-- sidebar menu start-->
-            <div class="leftside-navigation">
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <li>
-                        <a class="active" href="index.html">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="active" href="{{route('admin.about.index')}}">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Giới thiệu</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active" href="{{route('admin.about.create')}}">
-                                    <span>Thêm bài giới thiệu</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="active" href="{{route('admin.about.index')}}">
-                                    <span>Xem bài giới thiệu</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="active" href="{{route('admin.product.index')}}">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Quản lý sản phẩm</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active" href="{{route('admin.product.create')}}">
-                                    <span>Thêm sản phẩm</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="active" href="{{route('admin.product.index')}}">
-                                    <span>Xem sản phẩm</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="active" href="{{route('admin.category.index')}}">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Quản lý danh mục sản phẩm</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active" href="{{route('admin.category.create')}}">
-                                    <span>Thêm danh mục sản phẩm</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="active" href="{{route('admin.category.index')}}">
-                                    <span>Xem danh mục sản phẩm</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="active" href="{{route('admin.category.index')}}">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Slider</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active" href="{{route('admin.category.create')}}">
-                                    <span>Thêm slider</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="active" href="{{route('admin.category.index')}}">
-                                    <span>Xem slider</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- sidebar menu end-->
+    <!-- /.header -->
+    <div class="content">
+
+        <div class="navigation">
+            <h5 class="title">Navigation</h5>
+            <!-- /.title -->
+            <ul class="menu js__accordion">
+                <li class="current">
+                    <a class="waves-effect" href="{{route('admin.dashboard')}}">
+                        <i class="menu-icon mdi mdi-view-dashboard"></i>
+                        <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a class="waves-effect" href="{{route('admin.about.index')}}">
+                        <i class="menu-icon mdi mdi-desktop-mac"></i>
+                        <span>Giới thiệu</span></a>
+                </li>
+                <li>
+                    <a class="waves-effect parent-item" href="{{route('admin.category.index')}}">
+                        <i class="menu-icon mdi mdi-cube-outline"></i>
+                        <span>Quản lý danh mục sản phẩm</span></a>
+                </li>
+                <li>
+                    <a class="waves-effect" href="{{route('admin.product.index')}}">
+                        <i class="menu-icon mdi mdi-calendar"></i>
+                        <span>Quản lý sản phẩm</span></a>
+                </li>
+                <li>
+                    <a class="waves-effect parent-item" href="{{route('admin.category.index')}}">
+                        <i class="menu-icon mdi mdi-fire"></i>
+                        <span>Quản lý Slider</span></a>
+
+                </li>
+                <li>
+                    <a class="waves-effect" href="{{route('admin.category.index')}}">
+                        <i class="menu-icon mdi mdi-email"></i>
+                        <span>Quản lý Blog</span></a>
+                </li>
+            </ul>
         </div>
-    </aside>
-    <section id="main-content">
-        @yield('content')
-    </section>
-    <!--main content end-->
-</section>
-<!-- morris JavaScript -->
-<script>
-    $(document).ready(function () {
-        //BOX BUTTON SHOW AND CLOSE
-        jQuery('.small-graph-box').hover(function () {
-            jQuery(this).find('.box-button').fadeIn('fast');
-        }, function () {
-            jQuery(this).find('.box-button').fadeOut('fast');
-        });
-        jQuery('.small-graph-box .box-close').click(function () {
-            jQuery(this).closest('.small-graph-box').fadeOut(200);
-            return false;
-        });
+        <!-- /.navigation -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.main-menu -->
 
-        //CHARTS
-        function gd(year, day, month) {
-            return new Date(year, month - 1, day).getTime();
-        }
+<div class="fixed-navbar">
+    <div class="pull-left">
+        <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+        <h1 class="page-title">Home</h1>
+        <!-- /.page-title -->
+    </div>
+    <!-- /.pull-left -->
+    <div class="pull-right">
+        <div class="ico-item">
+            <a href="#" class="ico-item mdi mdi-magnify js__toggle_open" data-target="#searchform-header"></a>
+            <form action="#" id="searchform-header" class="searchform js__toggle"><input type="search"
+                                                                                         placeholder="Search..."
+                                                                                         class="input-search">
+                <button class="mdi mdi-magnify button-search" type="submit"></button>
+            </form>
+            <!-- /.searchform -->
+        </div>
+        <!-- /.ico-item -->
+        <a href="#" class="ico-item mdi mdi-email notice-alarm js__toggle_open" data-target="#message-popup"></a>
+        <a href="#" class="ico-item pulse"><span class="ico-item mdi mdi-bell notice-alarm js__toggle_open"
+                                                 data-target="#notification-popup"></span></a>
+        <a href="#" class="ico-item mdi mdi-logout js__logout"></a>
+    </div>
+    <!-- /.pull-right -->
+</div>
+<!-- /.fixed-navbar -->
 
-        graphArea2 = Morris.Area({
-            element: 'hero-area',
-            padding: 10,
-            behaveLikeLine: true,
-            gridEnabled: false,
-            gridLineColor: '#dddddd',
-            axes: true,
-            resize: true,
-            smooth: true,
-            pointSize: 0,
-            lineWidth: 0,
-            fillOpacity: 0.85,
-            data: [
-                {period: '2015 Q1', iphone: 2668, ipad: null, itouch: 2649},
-                {period: '2015 Q2', iphone: 15780, ipad: 13799, itouch: 12051},
-                {period: '2015 Q3', iphone: 12920, ipad: 10975, itouch: 9910},
-                {period: '2015 Q4', iphone: 8770, ipad: 6600, itouch: 6695},
-                {period: '2016 Q1', iphone: 10820, ipad: 10924, itouch: 12300},
-                {period: '2016 Q2', iphone: 9680, ipad: 9010, itouch: 7891},
-                {period: '2016 Q3', iphone: 4830, ipad: 3805, itouch: 1598},
-                {period: '2016 Q4', iphone: 15083, ipad: 8977, itouch: 5185},
-                {period: '2017 Q1', iphone: 10697, ipad: 4470, itouch: 2038},
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Your Notifications</h2>
+    <!-- /.popup-title -->
+    <div class="content">
+        <ul class="notice-list">
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-1.jpg" alt=""></span>
+                    <span class="name">John Doe</span>
+                    <span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
+                    <span class="time">10 min</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-2.jpg" alt=""></span>
+                    <span class="name">Anna William</span>
+                    <span class="desc">Like your post: “Facebook Messenger”</span>
+                    <span class="time">15 min</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar bg-warning"><i class="fa fa-warning"></i></span>
+                    <span class="name">Update Status</span>
+                    <span class="desc">Failed to get available update data. To ensure the please contact us.</span>
+                    <span class="time">30 min</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-1.jpg" alt=""></span>
+                    <span class="name">Jennifer</span>
+                    <span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
+                    <span class="time">45 min</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-6.jpg" alt=""></span>
+                    <span class="name">Michael Zenaty</span>
+                    <span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
+                    <span class="time">50 min</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-4.jpg" alt=""></span>
+                    <span class="name">Simon</span>
+                    <span class="desc">Like your post: “Facebook Messenger”</span>
+                    <span class="time">1 hour</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar bg-violet"><i class="fa fa-flag"></i></span>
+                    <span class="name">Account Contact Change</span>
+                    <span class="desc">A contact detail associated with your account has been changed.</span>
+                    <span class="time">2 hours</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-7.jpg" alt=""></span>
+                    <span class="name">Helen 987</span>
+                    <span class="desc">Like your post: “Facebook Messenger”</span>
+                    <span class="time">Yesterday</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-2.jpg" alt=""></span>
+                    <span class="name">Denise Jenny</span>
+                    <span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
+                    <span class="time">Oct, 28</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="avatar"><img src="{{asset('')}}admin/images/avatar-sm-8.jpg" alt=""></span>
+                    <span class="name">Thomas William</span>
+                    <span class="desc">Like your post: “Facebook Messenger”</span>
+                    <span class="time">Oct, 27</span>
+                </a>
+            </li>
+        </ul>
+        <!-- /.notice-list -->
+        <a href="#" class="notice-read-more">See more messages <i class="fa fa-angle-down"></i></a>
+    </div>
+    <!-- /.content -->
+</div>
 
-            ],
-            lineColors: ['#eb6f6f', '#926383', '#eb6f6f'],
-            xkey: 'period',
-            redraw: true,
-            ykeys: ['iphone', 'ipad', 'itouch'],
-            labels: ['All Visitors', 'Returning Visitors', 'Unique Visitors'],
-            pointSize: 2,
-            hideHover: 'auto',
-            resize: true
-        });
+@yield('content')
 
 
-    });
-</script>
-<!-- calendar -->
-<script type="text/javascript">
-    $(window).load(function () {
+<!--[if lt IE 9]>
+<script src="{{asset('admin/script/html5shiv.min.js')}}"></script>
+<script src="{{asset('admin/script/respond.min.js')}}"></script>
+<![endif]-->
+<!--
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{asset('admin/scripts/jquery.min.js')}}"></script>
+<script src="{{asset('admin/scripts/modernizr.min.js')}}"></script>
+<script src="{{asset('admin/plugin/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script src="{{asset('admin/plugin/nprogress/nprogress.js')}}"></script>
+<script src="{{asset('admin/plugin/sweet-alert/sweetalert.min.js')}}"></script>
+<script src="{{asset('admin/plugin/waves/waves.min.js')}}"></script>
 
-        $('#mycalendar').monthly({
-            mode: 'event',
+<!-- Morris Chart -->
+<script src="{{asset('admin/plugin/chart/morris/morris.min.js')}}"></script>
+<script src="{{asset('admin/plugin/chart/morris/raphael-min.js')}}"></script>
+<script src="{{asset('admin/scripts/chart.morris.init.min.js')}}"></script>
 
-        });
+<!-- Flot Chart -->
+<script src="{{asset('admin/plugin/chart/plot/jquery.flot.min.js')}}"></script>
+<script src="{{asset('admin/plugin/chart/plot/jquery.flot.tooltip.min.js')}}"></script>
+<script src="{{asset('admin/plugin/chart/plot/jquery.flot.categories.min.js')}}"></script>
+<script src="{{asset('admin/plugin/chart/plot/jquery.flot.pie.min.js')}}"></script>
+<script src="{{asset('admin/plugin/chart/plot/jquery.flot.stack.min.js')}}"></script>
+<script src="{{asset('admin/scripts/chart.flot.init.min.js')}}"></script>
 
-        $('#mycalendar2').monthly({
-            mode: 'picker',
-            target: '#mytarget',
-            setWidth: '250px',
-            startHidden: true,
-            showTrigger: '#mytarget',
-            stylePast: true,
-            disablePast: true
-        });
+<!-- Sparkline Chart -->
+<script src="{{asset('admin/plugin/chart/sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="{{asset('admin/scripts/chart.sparkline.init.min.js')}}"></script>
 
-        switch (window.location.protocol) {
-            case 'http:':
-            case 'https:':
-                // running on a server, should be good.
-                break;
-            case 'file:':
-                alert('Just a heads-up, events will not work when run locally.');
-        }
+<!-- FullCalendar -->
+<script src="{{asset('admin/plugin/moment/moment.js')}}"></script>
+<script src="{{asset('admin/plugin/fullcalendar/fullcalendar.min.js')}}"></script>
+<script src="{{asset('admin/scripts/fullcalendar.init.js')}}"></script>
 
-    });
-</script>
-<script src="{{asset('admin/js/jquery2.0.3.min.js')}}"></script>
-<script src="{{asset('admin/js/bootstrap.js')}}"></script>
-<script src="{{asset('admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('admin/js/scripts.js')}}"></script>
-<script src="{{asset('admin/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('admin/js/jquery.nicescroll.js')}}"></script>
-<!--[if lte IE 8]>
-<script language="javascript" type="text/javascript" src="{{('admin/js/flot-chart/excanvas.min.js')}}"></script><![endif]-->
-<script src="{{asset('admin/js/jquery.scrollTo.js')}}"></script>
-<!-- //calendar -->
+<script src="{{asset('admin/scripts/main.min.js')}}"></script>
+<script src="{{asset('admin/plugin/tinymce/tinymce.min.js')}}"></script>
+<script src="{{asset('admin/scripts/tinymce.init.min.js')}}"></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/advlist/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/anchor/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/autolink/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/autoresize/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/autosave/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/bbcode/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/charmap/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/code/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/codesample/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/colorpicker/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/contextmenu/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/directionality/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/emoticons/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/example/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/example_dependency/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/fullpage/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/fullscreen/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/hr/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/image/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/imagetools/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/importcss/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/insertdatetime/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/layer/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/legacyoutput/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/link/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/lists/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/media/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/nonbreaking/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/noneditable/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/pagebreak/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/paste/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/preview/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/print/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/save/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/searchreplace/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/spellchecker/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/tabfocus/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/table/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/template/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/textcolor/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/textpattern/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/visualblocks/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/visualchars/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/plugins/wordcount/plugin.min.js')}} "></script>
+<script src="{{asset('admin/plugin/tinymce/themes/modern/theme.min.js')}}"></script>
 </body>
 </html>

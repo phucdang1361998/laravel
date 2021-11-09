@@ -52,12 +52,17 @@
                                            style="color: #ea4335"
                                            href="{{route('admin.product.delete',['id' => $detail->id])}}"><i
                                                 class="fas fa-fw fa-trash"></i></a>
+                                        <a onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"
+                                           style="color: #ea4335"
+                                           href="{{route('admin.product.create',['id' => $detail->id])}}"><i
+                                                class="fas fa-fw fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
+                    <div class="row">{{ $product->links('vendor.pagination.default') }}</div>
                 </div>
             </div>
         </div>

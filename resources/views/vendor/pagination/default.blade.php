@@ -1,3 +1,6 @@
+<?php
+$name = \Illuminate\Support\Facades\Session::get('admin_name');
+?>
 @if ($paginator->total())
     <div class="col-sm-12 col-md-5">
         <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Tổng số dòng: {{$paginator->total()}}</div>

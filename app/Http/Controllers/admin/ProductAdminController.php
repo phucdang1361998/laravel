@@ -35,7 +35,7 @@ class ProductAdminController extends Controller
     public function index()
     {
         $this->Auth();
-        $product = $this->model->select('*')->paginate(15);
+        $product = $this->model->select('*')->paginate(10);
 
         return view('admin.product.index', [
             'product' => $product,

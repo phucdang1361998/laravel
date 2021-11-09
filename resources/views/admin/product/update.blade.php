@@ -10,6 +10,7 @@
                         <!-- /.box-title -->
                         <div class="card-content">
                             <form method="post" action="{{route('admin.product.update',['id' => $product['id']])}}" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
                                     <input type="text" class="form-control" name="name"

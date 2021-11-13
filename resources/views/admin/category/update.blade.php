@@ -10,12 +10,24 @@
                         <!-- /.box-title -->
                         <div class="card-content">
                             <form method="post" action="{{route('admin.category.update',['id' => $category['id']])}}" enctype="multipart/form-data">
+                                @csrf
+                                @if($message)
+                                    @if(is_array($message))
+                                        @foreach($message as $detailMes)
+                                            <p style="color: red">{{$detailMes}}</p>
+                                        @endforeach
+                                    @else
+                                        <p style="color: red">{{$message}}</p>
+                                    @endif
+                                @endif
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên danh mục sản phẩm</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="title" value="{{$category['name']}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mã danh mục sản phẩm</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="title" value="{{$category['code']}}">
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Lưu</button>

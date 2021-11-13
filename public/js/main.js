@@ -1,282 +1,684 @@
+/*-----------------------------------------------------------------------------------
 
-(function ($) {
-    "use strict";
+  Template Name: Tmart-Minimalist eCommerce HTML5 Template.
+  Template URI: #
+  Description: Tmart is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: Theme365
+  Version: 1.0
 
-    /*[ Load page ]
-    ===========================================================*/
-    $(".animsition").animsition({
-        inClass: 'fade-in',
-        outClass: 'fade-out',
-        inDuration: 1500,
-        outDuration: 800,
-        linkElement: '.animsition-link',
-        loading: true,
-        loadingParentElement: 'html',
-        loadingClass: 'animsition-loading-1',
-        loadingInner: '<div class="loader05"></div>',
-        timeout: false,
-        timeoutCountdown: 5000,
-        onLoadEvent: true,
-        browser: [ 'animation-duration', '-webkit-animation-duration'],
-        overlay : false,
-        overlayClass : 'animsition-overlay-slide',
-        overlayParentElement : 'html',
-        transition: function(url){ window.location.href = url; }
-    });
+-----------------------------------------------------------------------------------*/
+
+/*-------------------------------
+[  Table of contents  ]
+---------------------------------
+  01. jQuery MeanMenu
+  02. wow js active
+  03. Portfolio  Masonry (width)
+  04. Sticky Header
+  05. ScrollUp
+  06. Tooltip
+  07. ScrollReveal Js Init
+  08. Fixed Footer bottom script ( Newsletter )
+  09. Search Bar
+  10. Toogle Menu
+  11. Shopping Cart Area
+  12. Filter Area
+  13. User Menu
+  14. Overlay Close
+  15. Home Slider 
+  16. Popular Product Wrap
+  17. Testimonial Wrap
+  18. Magnific Popup  
+  19. Price Slider Active
+  20.  Plus Minus Button
+  21. jQuery scroll Nav
+
+  
+
+/*--------------------------------
+[ End table content ]
+-----------------------------------*/
+
+
+(function($) {
+    'use strict';
+
+
+/*-------------------------------------------
+  01. jQuery MeanMenu
+--------------------------------------------- */
     
-    /*[ Back to top ]
-    ===========================================================*/
-    var windowH = $(window).height()/2;
+$('.mobile-menu nav').meanmenu({
+    meanMenuContainer: '.mobile-menu-area',
+    meanScreenWidth: "991",
+    meanRevealPosition: "right",
+});
 
-    $(window).on('scroll',function(){
-        if ($(this).scrollTop() > windowH) {
-            $("#myBtn").css('display','flex');
-        } else {
-            $("#myBtn").css('display','none');
-        }
-    });
-
-    $('#myBtn').on("click", function(){
-        $('html, body').animate({scrollTop: 0}, 300);
-    });
-
-
-    /*==================================================================
-    [ Fixed Header ]*/
-    var headerDesktop = $('.container-menu-desktop');
-    var wrapMenu = $('.wrap-menu-desktop');
-
-    if($('.top-bar').length > 0) {
-        var posWrapHeader = $('.top-bar').height();
-    }
-    else {
-        var posWrapHeader = 0;
-    }
+/*-------------------------------------------
+  02. wow js active
+--------------------------------------------- */
+  new WOW().init();
     
-
-    if($(window).scrollTop() > posWrapHeader) {
-        $(headerDesktop).addClass('fix-menu-desktop');
-        $(wrapMenu).css('top',0); 
-    }  
-    else {
-        $(headerDesktop).removeClass('fix-menu-desktop');
-        $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop()); 
-    }
-
-    $(window).on('scroll',function(){
-        if($(this).scrollTop() > posWrapHeader) {
-            $(headerDesktop).addClass('fix-menu-desktop');
-            $(wrapMenu).css('top',0); 
-        }  
-        else {
-            $(headerDesktop).removeClass('fix-menu-desktop');
-            $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop()); 
-        } 
-    });
-
-
-    /*==================================================================
-    [ Menu mobile ]*/
-    $('.btn-show-menu-mobile').on('click', function(){
-        $(this).toggleClass('is-active');
-        $('.menu-mobile').slideToggle();
-    });
-
-    var arrowMainMenu = $('.arrow-main-menu-m');
-
-    for(var i=0; i<arrowMainMenu.length; i++){
-        $(arrowMainMenu[i]).on('click', function(){
-            $(this).parent().find('.sub-menu-m').slideToggle();
-            $(this).toggleClass('turn-arrow-main-menu-m');
-        })
-    }
-
-    $(window).resize(function(){
-        if($(window).width() >= 992){
-            if($('.menu-mobile').css('display') == 'block') {
-                $('.menu-mobile').css('display','none');
-                $('.btn-show-menu-mobile').toggleClass('is-active');
-            }
-
-            $('.sub-menu-m').each(function(){
-                if($(this).css('display') == 'block') { console.log('hello');
-                    $(this).css('display','none');
-                    $(arrowMainMenu).removeClass('turn-arrow-main-menu-m');
-                }
-            });
-                
-        }
-    });
-
-
-    /*==================================================================
-    [ Show / hide modal search ]*/
-    $('.js-show-modal-search').on('click', function(){
-        $('.modal-search-header').addClass('show-modal-search');
-        $(this).css('opacity','0');
-    });
-
-    $('.js-hide-modal-search').on('click', function(){
-        $('.modal-search-header').removeClass('show-modal-search');
-        $('.js-show-modal-search').css('opacity','1');
-    });
-
-    $('.container-search-header').on('click', function(e){
-        e.stopPropagation();
-    });
-
-
-    /*==================================================================
-    [ Isotope ]*/
-    var $topeContainer = $('.isotope-grid');
-    var $filter = $('.filter-tope-group');
-
+    
+/*-------------------------------------------
+  03. Product  Masonry (width)
+--------------------------------------------- */ 
+$('.htc__product__container').imagesLoaded( function() {
+  
     // filter items on button click
-    $filter.each(function () {
-        $filter.on('click', 'button', function () {
+    $('.product__menu').on( 'click', 'button', function() {
+      var filterValue = $(this).attr('data-filter');
+      $grid.isotope({ filter: filterValue });
+    }); 
+    // init Isotope
+    var $grid = $('.product__list').isotope({
+      itemSelector: '.single__pro',
+      percentPosition: true,
+      transitionDuration: '0.7s',
+      masonry: {
+        // use outer width of grid-sizer for columnWidth
+        columnWidth: '.single__pro',
+      }
+    });
+
+});
+
+$('.product__menu button').on('click', function(event) {
+    $(this).siblings('.is-checked').removeClass('is-checked');
+    $(this).addClass('is-checked');
+    event.preventDefault();
+});
+
+
+
+/*-------------------------------------------
+  04. Sticky Header
+--------------------------------------------- */ 
+  var win = $(window);
+  var sticky_id = $("#sticky-header-with-topbar");
+  win.on('scroll',function() {    
+    var scroll = win.scrollTop();
+    if (scroll < 245) {
+      sticky_id.removeClass("scroll-header");
+    }else{
+      sticky_id.addClass("scroll-header");
+    }
+  });
+    
+    
+/*--------------------------
+  05. ScrollUp
+---------------------------- */
+$.scrollUp({
+    scrollText: '<i class="zmdi zmdi-chevron-up"></i>',
+    easingType: 'linear',
+    scrollSpeed: 900,
+    animation: 'fade'
+});
+    
+    
+/*---------------------------
+  06. Tooltip
+------------------------------*/    
+$('[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'top',
+    container: 'body'
+});
+    
+    
+/*-----------------------------------
+  07. ScrollReveal Js Init
+-------------------------------------- */
+    window.sr = ScrollReveal({ duration: 800 , reset: true });
+    sr.reveal('.foo');
+    sr.reveal('.bar');
+    
+    
+/*-------------------------------------------------------
+  08. Fixed Footer bottom script ( Newsletter )
+--------------------------------------------------------*/
+
+var $newsletter_height = $(".htc__foooter__area");
+$('.fixed__footer').css({'margin-bottom': $newsletter_height.height() + 'px'});
+
+
+/*------------------------------------    
+  09. Search Bar
+--------------------------------------*/ 
+    
+  $( '.search__open' ).on( 'click', function () {
+    $( 'body' ).toggleClass( 'search__box__show__hide' );
+    return false;
+  });
+
+  $( '.search__close__btn .search__close__btn_icon' ).on( 'click', function () {
+    $( 'body' ).toggleClass( 'search__box__show__hide' );
+    return false;
+  });
+    
+    
+/*------------------------------------    
+  10. Toogle Menu
+--------------------------------------*/
+  $('.toggle__menu').on('click', function() {
+    $('.offsetmenu').addClass('offsetmenu__on');
+    $('.body__overlay').addClass('is-visible');
+
+  });
+
+  $('.offsetmenu__close__btn').on('click', function() {
+      $('.offsetmenu').removeClass('offsetmenu__on');
+      $('.body__overlay').removeClass('is-visible');
+  });
+
+/*------------------------------------    
+  11. Shopping Cart Area
+--------------------------------------*/
+
+  $('.cart__menu').on('click', function() {
+    $('.shopping__cart').addClass('shopping__cart__on');
+    $('.body__overlay').addClass('is-visible');
+
+  });
+
+  $('.offsetmenu__close__btn').on('click', function() {
+      $('.shopping__cart').removeClass('shopping__cart__on');
+      $('.body__overlay').removeClass('is-visible');
+  });
+
+
+/*------------------------------------    
+  12. Filter Area
+--------------------------------------*/
+
+  $('.filter__menu').on('click', function() {
+    $('.filter__wrap').addClass('filter__menu__on');
+    $('.body__overlay').addClass('is-visible');
+
+  });
+
+  $('.filter__menu__close__btn').on('click', function() {
+      $('.filter__wrap').removeClass('filter__menu__on');
+      $('.body__overlay').removeClass('is-visible');
+  });
+    
+    
+/*------------------------------------    
+  13. User Menu
+--------------------------------------*/
+
+  $('.user__menu').on('click', function() {
+    $('.user__meta').addClass('user__meta__on');
+    $('.body__overlay').addClass('is-visible');
+
+  });
+    
+  $('.offsetmenu__close__btn').on('click', function() {
+      $('.user__meta').removeClass('user__meta__on');
+      $('.body__overlay').removeClass('is-visible');
+  });
+
+
+
+/*------------------------------------    
+  14. Overlay Close
+--------------------------------------*/
+  $('.body__overlay').on('click', function() {
+    $(this).removeClass('is-visible');
+    $('.offsetmenu').removeClass('offsetmenu__on');
+    $('.shopping__cart').removeClass('shopping__cart__on');
+    $('.filter__wrap').removeClass('filter__menu__on');
+    $('.user__meta').removeClass('user__meta__on');
+  });
+
+    
+/*-----------------------------------------------
+  15. Home Slider
+-------------------------------------------------*/
+  if ($('.slider__activation__wrap').length) {
+    $('.slider__activation__wrap').owlCarousel({
+      loop: true,
+      margin:0,
+      nav:true,
+      autoplay: false,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      autoplayTimeout: 10000,
+      items:1,
+      dots: false,
+      lazyLoad: true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:1
+        },
+        800:{
+          items:1
+        },
+        1024:{
+          items:1
+        },
+        1200:{
+          items:1
+        },
+        1400:{
+          items:1
+        },
+        1920:{
+          items:1
+        }
+      }
+    });
+  }
+
+/*-----------------------------------------------
+  16. Popular Product Wrap
+-------------------------------------------------*/
+  $('.popular__product__wrap').owlCarousel({
+      loop: true,
+      margin:0,
+      nav:true,
+      autoplay: false,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      autoplayTimeout: 10000,
+      items:3,
+      dots: false,
+      lazyLoad: true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        800:{
+          items:2
+        },
+        1024:{
+          items:3
+        },
+        1200:{
+          items:3
+        },
+        1400:{
+          items:3
+        },
+        1920:{
+          items:3
+        }
+      }
+    });
+    
+    
+/*-----------------------------------------------
+  17.  product-slider-active
+-------------------------------------------------*/
+  $('.single-portfolio-slider').owlCarousel({
+      loop: true,
+      nav:true,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      items:1,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:1
+        },
+        800:{
+          items:1
+        },
+        1024:{
+          items:1
+        },
+        1200:{
+          items:1
+        },
+        1400:{
+          items:1
+        },
+        1920:{
+          items:1
+        }
+      }
+    });
+
+
+/*-----------------------------------------------
+  17.  product-slider-active
+-------------------------------------------------*/
+
+
+  $('.product-slider-active').owlCarousel({
+      loop: true,
+      margin:0,
+      nav:true,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      items:3,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        800:{
+          items:2
+        },
+        1024:{
+          items:3
+        },
+        1200:{
+          items:3
+        },
+        1400:{
+          items:3
+        },
+        1920:{
+          items:3
+        }
+      }
+    });
+
+
+/*-----------------------------------------------
+  17.  product-details-slider
+-------------------------------------------------*/
+
+
+  $('.product-details-slider').owlCarousel({
+      loop: true,
+      margin:20,
+      nav:true,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      items:3,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        800:{
+          items:2
+        },
+        1024:{
+          items:3
+        },
+        1200:{
+          items:3
+        },
+        1400:{
+          items:3
+        },
+        1920:{
+          items:3
+        }
+      }
+    });
+/*-----------------------------------------------
+  17.  product-details-slider
+-------------------------------------------------*/
+
+
+  $('.testimonial-2-active').owlCarousel({
+      loop: true,
+      margin:20,
+      nav:true,
+      navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
+      items:2,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:1
+        },
+        800:{
+          items:1
+        },
+        1024:{
+          items:2
+        },
+        1200:{
+          items:2
+        },
+        1400:{
+          items:2
+        },
+        1920:{
+          items:2
+        }
+      }
+    });
+
+
+/*-----------------------------------------------
+  18.  portfolio-slider-active
+-------------------------------------------------*/
+
+
+  $('.portfolio-slider-active').owlCarousel({
+      loop: true,
+      dotsEach: 1,
+      nav:false,
+      items:3,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        800:{
+          items:2
+        },
+        1024:{
+          items:3
+        },
+        1200:{
+          items:3
+        },
+        1400:{
+          items:3
+        },
+        1920:{
+          items:3
+        }
+      }
+    });
+
+
+
+/*-----------------------------------------------
+  17. Testimonial Wrap
+-------------------------------------------------*/
+
+
+  $('.testimonial__wrap').owlCarousel({
+      loop: true,
+      margin:0,
+      nav:false,
+      autoplay: false,
+      navText: false,
+      autoplayTimeout: 10000,
+      items:1,
+      dots: false,
+      lazyLoad: true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:1
+        },
+        800:{
+          items:1
+        },
+        1024:{
+          items:1
+        },
+        1200:{
+          items:1
+        },
+        1400:{
+          items:1
+        },
+        1920:{
+          items:1
+        }
+      }
+    });
+
+
+
+
+/*--------------------------------
+  18. Magnific Popup
+----------------------------------*/
+
+$('.video-popup').magnificPopup({
+  type: 'iframe',
+  mainClass: 'mfp-fade',
+  removalDelay: 160,
+  preloader: false,
+  zoom: {
+      enabled: true,
+  }
+});
+
+$('.image-popup').magnificPopup({
+  type: 'image',
+  mainClass: 'mfp-fade',
+  removalDelay: 100,
+  gallery:{
+      enabled:true, 
+  }
+});
+
+
+/*-------------------------------
+  19. Price Slider Active
+--------------------------------*/
+  $("#slider-range").slider({
+      range: true,
+      min: 10,
+      max: 500,
+      values: [110, 400],
+      slide: function(event, ui) {
+          $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      }
+  });
+  $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+      " - $" + $("#slider-range").slider("values", 1));
+
+
+/*-------------------------------
+  20.  Plus Minus Button 
+--------------------------------*/
+
+    $(".cart-plus-minus").append('<div class="dec qtybutton">-</i></div><div class="inc qtybutton">+</div>');
+
+    $(".qtybutton").on("click", function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find("input").val();
+        if ($button.text() == "+") {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 1) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        $button.parent().find("input").val(newVal);
+    });
+
+
+/*--------------------------
+  21. jQuery scroll Nav
+---------------------------- */
+    $('.onepage--menu').onePageNav({
+        scrollOffset: 0
+    }); 
+
+
+
+/*---------------------
+    countdown
+  --------------------- */
+    $('[data-countdown]').each(function() {
+		var $this = $(this), finalDate = $(this).data('countdown');
+		$this.countdown(finalDate, function(event) {
+		$this.html(event.strftime('<span class="cdown day">%-D <p>Days</p></span> <span class="cdown hour">%-H <p>Hour</p></span> <span class="cdown minutes">%M <p>Min</p></span class="cdown second"> <span>%S <p>Sec</p></span>'));
+		});
+    });    
+    
+    
+/* isotop active */
+    var $grid = $('.grid');
+    var $gridJustified = $('.grid-justified');
+    var $gridItems = '.grid-item';
+    // filter items on button click
+    $grid.imagesLoaded(function() {
+        
+        $('.portfolio-menu-active').on('click', 'button', function() {
+            $(this).siblings('.active').removeClass('active');
+            $(this).addClass('active');
             var filterValue = $(this).attr('data-filter');
-            $topeContainer.isotope({filter: filterValue});
+            $grid.isotope({
+                filter: filterValue
+            });
         });
         
-    });
-
-    // init Isotope
-    $(window).on('load', function () {
-        var $grid = $topeContainer.each(function () {
-            $(this).isotope({
-                itemSelector: '.isotope-item',
-                layoutMode: 'fitRows',
-                percentPosition: true,
-                animationEngine : 'best-available',
-                masonry: {
-                    columnWidth: '.isotope-item'
-                }
-            });
-        });
-    });
-
-    var isotopeButton = $('.filter-tope-group button');
-
-    $(isotopeButton).each(function(){
-        $(this).on('click', function(){
-            for(var i=0; i<isotopeButton.length; i++) {
-                $(isotopeButton[i]).removeClass('how-active1');
-            }
-
-            $(this).addClass('how-active1');
-        });
-    });
-
-    /*==================================================================
-    [ Filter / Search product ]*/
-    $('.js-show-filter').on('click',function(){
-        $(this).toggleClass('show-filter');
-        $('.panel-filter').slideToggle(400);
-
-        if($('.js-show-search').hasClass('show-search')) {
-            $('.js-show-search').removeClass('show-search');
-            $('.panel-search').slideUp(400);
-        }    
-    });
-
-    $('.js-show-search').on('click',function(){
-        $(this).toggleClass('show-search');
-        $('.panel-search').slideToggle(400);
-
-        if($('.js-show-filter').hasClass('show-filter')) {
-            $('.js-show-filter').removeClass('show-filter');
-            $('.panel-filter').slideUp(400);
-        }    
-    });
-
-
-
-
-    /*==================================================================
-    [ Cart ]*/
-    $('.js-show-cart').on('click',function(){
-        $('.js-panel-cart').addClass('show-header-cart');
-    });
-
-    $('.js-hide-cart').on('click',function(){
-        $('.js-panel-cart').removeClass('show-header-cart');
-    });
-
-    /*==================================================================
-    [ Cart ]*/
-    $('.js-show-sidebar').on('click',function(){
-        $('.js-sidebar').addClass('show-sidebar');
-    });
-
-    $('.js-hide-sidebar').on('click',function(){
-        $('.js-sidebar').removeClass('show-sidebar');
-    });
-
-    /*==================================================================
-    [ +/- num product ]*/
-    $('.btn-num-product-down').on('click', function(){
-        var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
-    });
-
-    $('.btn-num-product-up').on('click', function(){
-        var numProduct = Number($(this).prev().val());
-        $(this).prev().val(numProduct + 1);
-    });
-
-    /*==================================================================
-    [ Rating ]*/
-    $('.wrap-rating').each(function(){
-        var item = $(this).find('.item-rating');
-        var rated = -1;
-        var input = $(this).find('input');
-        $(input).val(0);
-
-        $(item).on('mouseenter', function(){
-            var index = item.index(this);
-            var i = 0;
-            for(i=0; i<=index; i++) {
-                $(item[i]).removeClass('zmdi-star-outline');
-                $(item[i]).addClass('zmdi-star');
-            }
-
-            for(var j=i; j<item.length; j++) {
-                $(item[j]).addClass('zmdi-star-outline');
-                $(item[j]).removeClass('zmdi-star');
+        // init Isotope
+        $grid.isotope({
+            itemSelector: $gridItems,
+            percentPosition: true,
+            masonry: {
+                // use outer width of grid-sizer for columnWidth
+                columnWidth: $gridItems,
             }
         });
-
-        $(item).on('click', function(){
-            var index = item.index(this);
-            rated = index;
-            $(input).val(index+1);
-        });
-
-        $(this).on('mouseleave', function(){
-            var i = 0;
-            for(i=0; i<=rated; i++) {
-                $(item[i]).removeClass('zmdi-star-outline');
-                $(item[i]).addClass('zmdi-star');
-            }
-
-            for(var j=i; j<item.length; j++) {
-                $(item[j]).addClass('zmdi-star-outline');
-                $(item[j]).removeClass('zmdi-star');
+        
+        // init Isotope
+        $gridJustified.isotope({
+            itemSelector: $gridItems,
+            percentPosition: true,
+            layoutMode: 'fitRows',
+            masonry: {
+                // use outer width of grid-sizer for columnWidth
+                columnWidth: 1,
             }
         });
     });
     
-    /*==================================================================
-    [ Show modal1 ]*/
-    $('.js-show-modal1').on('click',function(e){
-        e.preventDefault();
-        $('.js-modal1').addClass('show-modal1');
+    
+    /*--
+    Magnific Popup
+    ------------------------*/
+    $('.img-poppu').magnificPopup({
+        type: 'image',
+        gallery:{
+            enabled:true
+        }
     });
-
-    $('.js-hide-modal1').on('click',function(){
-        $('.js-modal1').removeClass('show-modal1');
+    
+    
+    $('.sidebar-active').stickySidebar({
+        topSpacing: 80,
+        bottomSpacing: 30,
+        minWidth: 767,
     });
-
-
-
+    
+    
+    
+    
 })(jQuery);
+
+
+
+

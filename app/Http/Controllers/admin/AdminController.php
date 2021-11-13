@@ -24,10 +24,18 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
+    public function profile()
+    {
+        $id = Session::get('admin_id');
+        $user = User::where('id', $id)->first();
+        return view('admin.profile', ['user' => $user]);
+    }
+
     public function dashboard()
     {
         $this->Auth();
-        return view('admin.index');
+        Session::put('message', null);
+        return view('admin.dashboard');
     }
 
     public function login(Request $request)
@@ -40,6 +48,7 @@ class AdminController extends Controller
         if (isset($checkUser)) {
             Session::put('admin_name', $checkUser->name);
             Session::put('admin_id', $checkUser->id);
+            Session::put('image', $checkUser->image);
             return redirect()->route('admin.dashboard');
         } else {
             Session::put('message', ERROR_ACCOUT);

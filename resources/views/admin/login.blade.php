@@ -31,11 +31,7 @@
             $message = \Illuminate\Support\Facades\Session::get('message');
             ?>
             @if($message)
-                <tr>
-                    <td id="showToast">
-                        {{$message}}
-                    </td>
-                </tr>
+                <p style="color: red">{{$message}}</p>
             @endif
             <div class="frm-input"><input type="text" placeholder="Username" name="email" class="frm-inp"><i
                     class="fa fa-user frm-ico"></i></div>

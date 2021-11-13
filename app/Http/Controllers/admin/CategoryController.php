@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -15,6 +16,21 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->model = new Category();
+    }
+
+    public function validator(array $attributes)
+    {
+        $fields = [
+            'name' => 'required',
+            'code' => 'required',
+        ];
+
+        $messages = [
+            'name.required' => 'Tên loại sản phẩm không được để trống',
+            'code.required' => 'Mã loại sản phẩm không được để trống',
+        ];
+
+        return $validator = Validator::make($attributes, $fields, $messages);
     }
 
     public function Auth()
@@ -30,7 +46,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $this->Auth();
-        $category = Category::select('*')->get();
+        $category = Category::select('*')->orderBy('id', 'DESC')->get();
         return view('admin.category.index', [
             'category' => $category,
         ]);
@@ -49,6 +65,12 @@ class CategoryController extends Controller
     {
         $this->Auth();
         $attributes = $request->all();
+
+        $validate = $this->validator($attributes);
+        if ($validate->fails()) {
+            return redirect()->route('admin.category.create', ['message' => $validate->errors()->all()]);
+        }
+
         try {
             DB::beginTransaction();
             $param = [
@@ -71,6 +93,12 @@ class CategoryController extends Controller
     {
         $this->Auth();
         $category = $this->model->find($id);
+
+        $validate = $this->validator($request->all());
+        if ($validate->fails()) {
+            return redirect()->route('admin.category.update', ['message' => $validate->errors()->all()]);
+        }
+
         return view('admin.category.update', [
             'category' => $category,
             'message'  => isset($request->all()['message']) ? $request->all()['message'] : ''

@@ -11,18 +11,30 @@
                         <div class="card-content">
                             <form method="post" action="{{route('admin.product.update',['id' => $product['id']])}}" enctype="multipart/form-data">
                                 @csrf
+                                @if($message)
+                                    @if(is_array($message))
+                                        @foreach($message as $detailMes)
+                                            <p style="color: red">{{$detailMes}}</p>
+                                        @endforeach
+                                    @else
+                                        <p style="color: red">{{$message}}</p>
+                                    @endif
+                                @endif
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="name"
                                            value="{{$product['name']}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mã sản phẩm</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="code"
                                            value="{{$product['code']}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Loại sản phẩm</label>
+                                    <span style="color: red">(*)</span>
                                     <select class="form-control input-sm m-bot15" name="product_type_id">
                                         @foreach($category as $detail)
                                             @if($detail['id'] == $product['product_type_id'])
@@ -36,6 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Giá</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="price"
                                            value="{{number_format($product['price'])}}">
                                 </div>

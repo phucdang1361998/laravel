@@ -206,43 +206,21 @@
                         </ul>
                     </div>
 
-                    <div class="filter-col2 p-r-15 p-b-27">
+                    <form action="{{route('clients.product.index')}}" method="get">
                         <div class="mtext-102 cl2 p-b-15">
                             Giá
                         </div>
+                        <div class="form-group">
+                            <label>Từ</label>
+                            <input type="number" name="from_price"><br>
+                        </div>
+                        <div class="form-group" style="margin-top: -30px">
+                            <label>Đến</label>
+                            <input type="number" name="to_price">
+                        </div>
+                        <button type="submit" style="background-color: #5897fb">Tìm</button>
+                    </form>
 
-                        <ul>
-                            <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
-                                    $0.00 - $50.00
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
-                                    $50.00 - $100.00
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
-                                    $100.00 - $150.00
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
-                                    $150.00 - $200.00
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
-                                    $200.00+
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -278,7 +256,7 @@
 
                             @if($proDtl['sale_off'] == 1)
                                 <div class="block2-txt-child2 flex-r p-t-3">
-                                    <span class="text-105 cl2" data-label1="hot">
+                                    <span class="text-105 cl2" data-label1="sale">
 									    {{number_format($proDtl['price_sale']).' '.'VNĐ'}}
 								    </span>
                                 </div>

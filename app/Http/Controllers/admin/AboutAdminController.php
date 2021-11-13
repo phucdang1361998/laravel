@@ -33,7 +33,7 @@ class AboutAdminController extends Controller
     public function index()
     {
         $this->Auth();
-        $about = About::select('*')->get();
+        $about = About::select('*')->orderBy('id', 'DESC')->get();
         return view('admin.about.index', [
             'about' => $about,
         ]);

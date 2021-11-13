@@ -10,7 +10,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
 class ProductAdminController extends Controller
@@ -20,6 +22,28 @@ class ProductAdminController extends Controller
     public function __construct()
     {
         $this->model = new Product();
+    }
+
+    public function validator(array $attributes)
+    {
+        $fields = [
+            'name'            => 'required',
+            'code'            => 'required',
+            'product_type_id' => 'required',
+            'price'           => 'required',
+            'sale_off'        => 'nullable',
+            'price_sale'      => 'nullable',
+            'description'     => 'nullable',
+        ];
+
+        $messages = [
+            'name.required'            => 'Tên sản phẩm không được để trống',
+            'code.required'            => 'Mã sản phẩm không được để trống',
+            'product_type_id.required' => 'Loại sản phẩm không được để trống',
+            'price.required'           => 'Giá không được để trống',
+        ];
+
+        return $validator = Validator::make($attributes, $fields, $messages);
     }
 
     public function Auth()
@@ -35,7 +59,7 @@ class ProductAdminController extends Controller
     public function index()
     {
         $this->Auth();
-        $product = $this->model->select('*')->paginate(10);
+        $product = $this->model->select('*')->orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.product.index', [
             'product' => $product,
@@ -58,6 +82,12 @@ class ProductAdminController extends Controller
     {
         $this->Auth();
         $attributes = $request->all();
+
+        $validate = $this->validator($attributes);
+        if ($validate->fails()) {
+
+            return redirect()->route('admin.product.create', ['message' => $validate->errors()->all()]);
+        }
 
         try {
             DB::beginTransaction();
@@ -113,6 +143,11 @@ class ProductAdminController extends Controller
         $attributes['price'] = str_replace(',', '', $attributes['price']);
         $product = $this->model->find($id);
 
+        $validate = $this->validator($attributes);
+        if ($validate->fails()) {
+            return redirect()->route('admin.product.update', ['message' => $validate->errors()->all()]);
+        }
+
         try {
             DB::beginTransaction();
             $param = [
@@ -143,11 +178,11 @@ class ProductAdminController extends Controller
             }
             DB::commit();
         } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->route('admin.product.edit', [
                 'message' => ERROR,
                 'id'      => $id
             ]);
-            DB::rollBack();
         }
 
         return redirect()->route('admin.product.index', ['name' => $attributes['name']]);

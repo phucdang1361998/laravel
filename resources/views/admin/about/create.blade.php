@@ -10,12 +10,23 @@
                         <!-- /.box-title -->
                         <div class="card-content">
                             <form method="post" action="{{route('admin.about.store')}}" enctype="multipart/form-data">
+                                @if($message)
+                                    @if(is_array($message))
+                                        @foreach($message as $detailMes)
+                                            <p style="color: red">{{$detailMes}}</p>
+                                        @endforeach
+                                    @else
+                                        <p style="color: red">{{$message}}</p>
+                                    @endif
+                                @endif
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tiêu đề</label>
+                                    <span style="color: red">(*)</span>
                                     <input type="text" class="form-control" name="title">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Nội dung</label>
+                                    <span style="color: red">(*)</span>
                                     <textarea id="tinymce" type="text" class="form-control" name="description"></textarea>
                                 </div>
                                 <div class="form-group">

@@ -9,15 +9,9 @@
                         <h4 class="box-title">Giới thiệu</h4>
                         <!-- /.box-title -->
                         <div class="dropdown js__drop_down">
-                            <a href="#"
-                               class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else there</a></li>
-                                <li class="split"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
+                            <button type="button" class="btn btn-primary waves-effect waves-light">
+                                <a style="color: white" href="{{route('admin.about.create')}}">Tạo mới</a>
+                            </button>
                             <!-- /.sub-menu -->
                         </div>
                         <!-- /.dropdown js__dropdown -->
@@ -41,10 +35,6 @@
                                     <a onclick="return confirm('Bạn có chắc muốn xóa bài giới thiệu này không?')"
                                        style="color: #ea4335"
                                        href="{{route('admin.about.delete',['id' => $detail->id])}}"><i
-                                            class="fas fa-fw fa-trash"></i></a>
-                                    <a onclick="return confirm('Bạn có chắc muốn xóa bài giới thiệu này không?')"
-                                       style="color: #ea4335"
-                                       href="{{route('admin.about.create',['id' => $detail->id])}}"><i
                                             class="fas fa-fw fa-trash"></i></a>
                                 </td>
                             </tr>

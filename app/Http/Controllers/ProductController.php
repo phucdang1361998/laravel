@@ -20,6 +20,13 @@ class ProductController extends Controller
                 $product->where('name', 'like', '%' . $attributes['name'] . '%');
             }
 
+            if (isset($attributes['from_price']) && isset($attributes['to_price'])) {
+                $product->where([
+                    ['price', '>=', $attributes['from_price']],
+                    ['price', '<=', $attributes['to_price']]
+                ]);
+            }
+
             if (isset($attributes['sort'])) {
                 foreach ($attributes['sort'] as $key => $value) {
                     $product->orderBy($key, $value);

@@ -1,223 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <title>Product Detail</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tmart-Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
-
-    {{--	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">--}}
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('apple-touch-icon.png')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/core.css')}}">
+    <link rel="stylesheet" href="{{asset('css/shortcode/shortcodes.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
-<body class="animsition">
 
-<!-- Header -->
-@include('clients.header')
-<!-- Cart -->
-<div class="wrap-header-cart js-panel-cart">
-    <div class="s-full js-hide-cart"></div>
+<body>
+<!--[if lt IE 8]>
+<![endif]-->
 
-    <div class="header-cart flex-col-l p-l-65 p-r-25">
-        <div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-            <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-                <i class="zmdi zmdi-close"></i>
-            </div>
-        </div>
-
-        <div class="header-cart-content flex-w js-pscroll">
-            <ul class="header-cart-wrapitem w-full">
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="{{asset('images/item-cart-01.jpg')}}" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            White Shirt Pleat
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-                    </div>
-                </li>
-
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="{{asset('images/item-cart-02.jpg')}}" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Converse All Star
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-                    </div>
-                </li>
-
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="{{asset('images/item-cart-03.jpg')}}" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Nixon Porter Leather
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="w-full">
-                <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
-                </div>
-
-                <div class="header-cart-buttons flex-w w-full">
-                    <a href="shoping-cart.html"
-                       class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        View Cart
-                    </a>
-
-                    <a href="shoping-cart.html"
-                       class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        Check Out
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- breadcrumb -->
-<div class="container">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="{{route('clients.index')}}" class="stext-109 cl8 hov-cl1 trans-04">
-            Trang chủ
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <a href="{{route('clients.product.index')}}" class="stext-109 cl8 hov-cl1 trans-04">
-            Sản phẩm
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <span class="stext-109 cl4">
-				{{$product['name']}}
-			</span>
-    </div>
-</div>
-
-
-<!-- Product Detail -->
-<section class="sec-product-detail bg0 p-t-65 p-b-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-7 p-b-30">
-                <div class="p-l-25 p-r-30 p-lr-0-lg">
-                    <div class="wrap-slick3 flex-sb flex-w">
-                        <div class="wrap-slick3-dots"></div>
-                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                        <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="{{asset($product['image'])}}">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="{{asset($product['image'])}}" alt="IMG-PRODUCT">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                       href="{{asset($product['image'])}}">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-5 p-b-30">
-                <div class="p-r-50 p-t-5 p-lr-0-lg">
-                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                        {{$product['name']}}
-                    </h4>
-
-                    @if($product['sale_off'] == 0)
-                        <span class="mtext-106 cl2">
-									    {{number_format($product['price']).' '.'VNĐ'}}
-								    </span>
-                    @else
-                        <span class="mtext-106 cl2">
-									    <del>{{number_format($product['price']).' '.'VNĐ'}}</del>
-								    </span>
-                    @endif
-                    @if($product['sale_off'] == 1)
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                                    <span class="text-105 cl2" data-label1="hot">
-									    {{number_format($product['price_sale']).' '.'VNĐ'}}
-								    </span>
-                        </div>
-                @endif
-
-                <!--  -->
-                    <div class="p-t-33">
-
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-204 flex-w flex-m respon6-next">
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                    </div>
-
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
-                                           value="1">
-
-                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                    </div>
-                                </div>
-
-                                <button
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to cart
-                                </button>
+<!-- Body main wrapper start -->
+<div class="wrapper fixed__footer">
+    @include('clients.header')
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    <div class="offset__wrapper">
+        <!-- Start Search Popap -->
+        <div class="search__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search__inner">
+                            <form action="#" method="get">
+                                <input placeholder="Search here... " type="text">
+                                <button type="submit"></button>
+                            </form>
+                            <div class="search__close__btn">
+                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
                             </div>
                         </div>
                     </div>
@@ -225,153 +48,119 @@
             </div>
         </div>
 
-        <div class="bor10 m-t-50 p-t-43 p-b-40">
-            <!-- Tab01 -->
-            <div class="tab01">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#information" role="tab">Mô tả sản phẩm</a>
-                    </li>
+        <div class="shopping__cart">
+            <div class="shopping__cart__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="shp__cart__wrap">
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/1.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$105.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/2.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">Brone Candle</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$25.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="shoping__total">
+                    <li class="subtotal">Subtotal:</li>
+                    <li class="total__price">$130.00</li>
                 </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content p-t-43">
-                    <!-- - -->
-                    <div class="tab-pane fade show active" id="description" role="tabpanel">
-                        <div class="how-pos2 p-lr-15-md">
-                            <p class="stext-102 cl6">
-                                {{$product['description']}}
-                            </p>
+                <ul class="shopping__btn">
+                    <li><a href="cart.html">View Cart</a></li>
+                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Cart Panel -->
+    </div>
+    <!-- End Offset Wrapper -->
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area"
+         style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Chi tiết sản phẩm</h2>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="{{route('clients.index')}}">Trang chủ</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">Chi tiết sản phẩm</span>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-        <span class="stext-107 cl6 p-lr-25">
-				Loại sản phẩm: {{$product->type->name}}
-			</span>
-    </div>
-</section>
-
-
-<!-- Related Products -->
-<section class="sec-relate-product bg0 p-t-45 p-b-105">
-    <div class="container">
-        <div class="p-b-45">
-            <h3 class="ltext-106 cl5 txt-center">
-                Sản phẩm tương tự
-            </h3>
-        </div>
-
-        <!-- Slide2 -->
-        <div class="wrap-slick2">
-            <div class="slick2">
-                @foreach($relative as $reDtl)
-                    <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                        <div class="block2">
-                            <div class="block2-pic hov-img0">
-                                <img src="{{asset($reDtl['image'])}}" alt="IMG-PRODUCT">
-
-                                <a href="{{route('clients.product.detail', ['id' => $reDtl['id']])}}"
-                                   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                    Xem chi tiết
-                                </a>
-                            </div>
-
-                            <div class="block2-txt flex-w flex-t p-t-14">
-                                <div class="block2-txt-child1 flex-col-l ">
-                                    <a href="{{route('clients.product.detail',['id' => $reDtl['id']])}}"
-                                       class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                        {{$reDtl['name']}}
-                                    </a>
-                                    @if($reDtl['sale_off'] == 0)
-                                        <span class="stext-105 cl3">
-									    {{number_format($reDtl['price']).' '.'VNĐ'}}
-								    </span>
-                                    @else
-                                        <span class="stext-105 cl3">
-									    <del>{{number_format($reDtl['price']).' '.'VNĐ'}}</del>
-								    </span>
-                                    @endif
-                                </div>
-
-                                @if($reDtl['sale_off'] == 1)
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                    <span class="text-105 cl2" data-label1="hot">
-									    {{number_format($reDtl['price_sale']).' '.'VNĐ'}}
-								    </span>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Footer -->
-@include('clients.footer')
-<!-- Back to top -->
-<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-</div>
-
-<!-- Modal1 -->
-<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-    <div class="overlay-modal1 js-hide-modal1"></div>
-
-    <div class="container">
-        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                <img src="{{asset('images/icons/icon-close.png')}}" alt="CLOSE">
-            </button>
-
+    <!-- End Bradcaump area -->
+    <!-- Start Product Details -->
+    <section class="htc__product__details pt--120 pb--100 bg__white">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-7 p-b-30">
-                    <div class="p-l-25 p-r-30 p-lr-0-lg">
-                        <div class="wrap-slick3 flex-sb flex-w">
-                            <div class="wrap-slick3-dots"></div>
-                            <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                            <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="{{asset('images/product-detail-01.jpg')}}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{asset('images/product-detail-01.jpg')}}" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="{{asset('images/product-detail-01.jpg')}}">
-                                            <i class="fa fa-expand"></i>
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <div class="product__details__container">
+                        <!-- Start Small images -->
+                        <ul class="product__small__images" role="tablist">
+                            <li role="presentation" class="pot-small-img active">
+                                <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                    <img src="images/product-details/small-img/1.jpg" alt="small-image">
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Small images -->
+                        <div class="product__big__images">
+                            <div class="portfolio-full-image tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active product-video-position"
+                                     id="img-tab-1">
+                                    <img src="{{asset($product['image'])}}" alt="full-image">
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-2">
+                                    <img src="images/product-details/big-img/12.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="item-slick3" data-thumb="{{asset('images/product-detail-02.jpg')}}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{asset('images/product-detail-02.jpg')}}" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="{{asset('images/product-detail-02.jpg')}}">
-                                            <i class="fa fa-expand"></i>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-3">
+                                    <img src="images/product-details/big-img/11.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="item-slick3" data-thumb="{{asset('images/product-detail-03.jpg')}}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{asset('images/product-detail-03.jpg')}}" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="{{asset('images/product-detail-03.jpg')}}">
-                                            <i class="fa fa-expand"></i>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-4">
+                                    <img src="images/product-details/big-img/12.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
                                         </a>
                                     </div>
                                 </div>
@@ -379,218 +168,350 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-5 p-b-30">
-                    <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            Lightweight Jacket
-                        </h4>
-
-                        <span class="mtext-106 cl2">
-								$58.79
-							</span>
-
-                        <p class="stext-102 cl3 p-t-23">
-                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare
-                            feugiat.
-                        </p>
-
-                        <!--  -->
-                        <div class="p-t-33">
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Size
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Size S</option>
-                                            <option>Size M</option>
-                                            <option>Size L</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Color
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Red</option>
-                                            <option>Blue</option>
-                                            <option>White</option>
-                                            <option>Grey</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-204 flex-w flex-m respon6-next">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
-
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                               name="num-product" value="1">
-
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                    <div class="htc__product__details__inner">
+                        <div class="pro__detl__title">
+                            <h2>{{$product['name']}}</h2>
+                        </div>
+                        <ul class="pro__dtl__prize">
+                            <li class="old__prize">$15.21</li>
+                            <li>$10.00</li>
+                        </ul>
+                        <div class="product-action-wrap">
+                            <div class="prodict-statas"><span>Quantity :</span></div>
+                            <div class="product-quantity">
+                                <form id='myform' method='POST' action='#'>
+                                    <div class="product-quantity">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
                                         </div>
                                     </div>
-
-                                    <button
-                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
-                                    </button>
-                                </div>
+                                </form>
                             </div>
                         </div>
-
-                        <!--  -->
-                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                            <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#"
-                                   class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                   data-tooltip="Add to Wishlist">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </a>
-                            </div>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Google Plus">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
+                        <ul class="pro__dtl__btn">
+                            <li class="buy__now__btn"><a href="#">buy now</a></li>
+                            <li><a href="#"><span class="ti-heart"></span></a></li>
+                            <li><a href="#"><span class="ti-email"></span></a></li>
+                        </ul>
+                        <div class="pro__social__share">
+                            <h2>Share :</h2>
+                            <ul class="pro__soaial__link">
+                                <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- End Product Details -->
+    <!-- Start Product tab -->
+    <section class="htc__product__details__tab bg__white pb--120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <ul class="product__deatils__tab mb--60" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#description" role="tab" data-toggle="tab">Description</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#sheet" role="tab" data-toggle="tab">Data sheet</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#reviews" role="tab" data-toggle="tab">Reviews</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product__details__tab__content">
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="description" class="product__tab__content fade in active">
+                            <div class="product__description__wrap">
+                                <div class="product__desc">
+                                    <h2 class="title__6">Details</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        noexercit ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                        qui officia deserunt mollit anim id.</p>
+                                </div>
+                                <div class="pro__feature">
+                                    <h2 class="title__6">Features</h2>
+                                    <ul class="feature__list">
+                                        <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in
+                                                reprehenderit in voluptate velit esse</a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in
+                                                reprehenderit in voluptate velit esse</a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor
+                                                incididunt ut labore et </a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea
+                                                commodo consequat.</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="sheet" class="product__tab__content fade">
+                            <div class="pro__feature">
+                                <h2 class="title__6">Data sheet</h2>
+                                <ul class="feature__list">
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in
+                                            voluptate velit esse</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in
+                                            voluptate velit esse</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor
+                                            incididunt ut labore et </a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor
+                                            incididunt ut labore et </a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo
+                                            consequat.</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo
+                                            consequat.</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="reviews" class="product__tab__content fade">
+                            <div class="review__address__inner">
+                                <!-- Start Single Review -->
+                                <div class="pro__review">
+                                    <div class="review__thumb">
+                                        <img src="images/review/1.jpg" alt="review images">
+                                    </div>
+                                    <div class="review__details">
+                                        <div class="review__info">
+                                            <h4><a href="#">Gerald Barnes</a></h4>
+                                            <ul class="rating">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                            </ul>
+                                            <div class="rating__send">
+                                                <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
+                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="review__date">
+                                            <span>27 Jun, 2016 at 2:30pm</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan
+                                            egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget
+                                            eni Praesent et messages in con sectetur posuere dolor non.</p>
+                                    </div>
+                                </div>
+                                <!-- End Single Review -->
+                                <!-- Start Single Review -->
+                                <div class="pro__review ans">
+                                    <div class="review__thumb">
+                                        <img src="images/review/2.jpg" alt="review images">
+                                    </div>
+                                    <div class="review__details">
+                                        <div class="review__info">
+                                            <h4><a href="#">Gerald Barnes</a></h4>
+                                            <ul class="rating">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                            </ul>
+                                            <div class="rating__send">
+                                                <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
+                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="review__date">
+                                            <span>27 Jun, 2016 at 2:30pm</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan
+                                            egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget
+                                            eni Praesent et messages in con sectetur posuere dolor non.</p>
+                                    </div>
+                                </div>
+                                <!-- End Single Review -->
+                            </div>
+                            <!-- Start RAting Area -->
+                            <div class="rating__wrap">
+                                <h2 class="rating-title">Write A review</h2>
+                                <h4 class="rating-title-2">Your Rating</h4>
+                                <div class="rating__list">
+                                    <!-- Start Single List -->
+                                    <ul class="rating">
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                    </ul>
+                                    <!-- End Single List -->
+                                    <!-- Start Single List -->
+                                    <ul class="rating">
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                    </ul>
+                                    <!-- End Single List -->
+                                    <!-- Start Single List -->
+                                    <ul class="rating">
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                    </ul>
+                                    <!-- End Single List -->
+                                    <!-- Start Single List -->
+                                    <ul class="rating">
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                    </ul>
+                                    <!-- End Single List -->
+                                    <!-- Start Single List -->
+                                    <ul class="rating">
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                        <li><i class="zmdi zmdi-star-half"></i></li>
+                                    </ul>
+                                    <!-- End Single List -->
+                                </div>
+                            </div>
+                            <!-- End RAting Area -->
+                            <div class="review__box">
+                                <form id="review-form">
+                                    <div class="single-review-form">
+                                        <div class="review-box name">
+                                            <input type="text" placeholder="Type your name">
+                                            <input type="email" placeholder="Type your email">
+                                        </div>
+                                    </div>
+                                    <div class="single-review-form">
+                                        <div class="review-box message">
+                                            <textarea placeholder="Write your review"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="review-btn">
+                                        <a class="fv-btn" href="#">submit review</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @include('clients.footer')
 </div>
-
-<!--===============================================================================================-->
-<script>
-    $(".js-select2").each(function () {
-        $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
-        });
-    })
-</script>
-<!--===============================================================================================-->
-<script>
-    $('.parallax100').parallax100();
-</script>
-<!--===============================================================================================-->
-<script>
-    $('.gallery-lb').each(function () { // the containers for all your galleries
-        $(this).magnificPopup({
-            delegate: 'a', // the selector for gallery item
-            type: 'image',
-            gallery: {
-                enabled: true
-            },
-            mainClass: 'mfp-fade'
-        });
-    });
-</script>
-<!--===============================================================================================-->
-<script>
-    $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
-        e.preventDefault();
-    });
-
-    $('.js-addwish-b2').each(function () {
-        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass('js-addedwish-b2');
-            $(this).off('click');
-        });
-    });
-
-    $('.js-addwish-detail').each(function () {
-        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass('js-addedwish-detail');
-            $(this).off('click');
-        });
-    });
-
-    /*---------------------------------------------*/
-
-    $('.js-addcart-detail').each(function () {
-        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
-        });
-    });
-
-</script>
-<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-
-<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-
-<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-
-<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
-<script src="{{asset('js/slick-custom.js')}}"></script>
-
-<script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
-<script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
-
-<script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-<script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<!-- Body main wrapper end -->
+<!-- QUICKVIEW PRODUCT -->
+<div id="quickview-wrapper">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal__container" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-product">
+                        <!-- Start product images -->
+                        <div class="product-images">
+                            <div class="main-image images">
+                                <img alt="big images" src="images/product/big-img/1.jpg">
+                            </div>
+                        </div>
+                        <!-- end product images -->
+                        <div class="product-info">
+                            <h1>Simple Fabric Bags</h1>
+                            <div class="rating__and__review">
+                                <ul class="rating">
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                </ul>
+                                <div class="review">
+                                    <a href="#">4 customer reviews</a>
+                                </div>
+                            </div>
+                            <div class="price-box-3">
+                                <div class="s-price-box">
+                                    <span class="new-price">$17.20</span>
+                                    <span class="old-price">$45.00</span>
+                                </div>
+                            </div>
+                            <div class="quick-desc">
+                                Designed for simplicity and made from high quality materials. Its sleek geometry and
+                                material combinations creates a modern look.
+                            </div>
+                            <div class="select__color">
+                                <h2>Select color</h2>
+                                <ul class="color__list">
+                                    <li class="red"><a title="Red" href="#">Red</a></li>
+                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                </ul>
+                            </div>
+                            <div class="select__size">
+                                <h2>Select size</h2>
+                                <ul class="color__list">
+                                    <li class="l__size"><a title="L" href="#">L</a></li>
+                                    <li class="m__size"><a title="M" href="#">M</a></li>
+                                    <li class="s__size"><a title="S" href="#">S</a></li>
+                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
+                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
+                                </ul>
+                            </div>
+                            <div class="social-sharing">
+                                <div class="widget widget_socialsharing_widget">
+                                    <h3 class="widget-title-modal">Share this product</h3>
+                                    <ul class="social-icons">
+                                        <li><a target="_blank" title="rss" href="#" class="rss social-icon"><i
+                                                    class="zmdi zmdi-rss"></i></a></li>
+                                        <li><a target="_blank" title="Linkedin" href="#" class="linkedin social-icon"><i
+                                                    class="zmdi zmdi-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="zmdi zmdi-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Tumblr" href="#" class="tumblr social-icon"><i
+                                                    class="zmdi zmdi-tumblr"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="zmdi zmdi-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="addtocart-btn">
+                                <a href="#">Add to cart</a>
+                            </div>
+                        </div><!-- .product-info -->
+                    </div><!-- .modal-product -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+    <!-- END Modal -->
+</div>
+<script src="{{asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('js/slick.min.js')}}"></script>
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/waypoints.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-<!--===============================================================================================-->
-<script>
-    $('.js-pscroll').each(function () {
-        $(this).css('position', 'relative');
-        $(this).css('overflow', 'hidden');
-        var ps = new PerfectScrollbar(this, {
-            wheelSpeed: 1,
-            scrollingThreshold: 1000,
-            wheelPropagation: false,
-        });
-
-        $(window).on('resize', function () {
-            ps.update();
-        })
-    });
-</script>
-<!--===============================================================================================-->
 
 </body>
+
 </html>

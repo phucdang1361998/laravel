@@ -1,277 +1,362 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <title>Contact</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tmart-Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
-
-    {{--	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">--}}
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('apple-touch-icon.png')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/core.css')}}">
+    <link rel="stylesheet" href="{{asset('css/shortcode/shortcodes.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
-<body class="animsition">
 
-<!-- Header -->
-@include('clients.header')
-<!-- Cart -->
-<div class="wrap-header-cart js-panel-cart">
-    <div class="s-full js-hide-cart"></div>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <div class="header-cart flex-col-l p-l-65 p-r-25">
-        <div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-            <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-                <i class="zmdi zmdi-close"></i>
-            </div>
-        </div>
-
-        <div class="header-cart-content flex-w js-pscroll">
-            <ul class="header-cart-wrapitem w-full">
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="images/item-cart-01.jpg" alt="IMG">
+<!-- Body main wrapper start -->
+<div class="wrapper fixed__footer">
+ @include('clients.header')
+    <!-- End Header Style -->
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    <div class="offset__wrapper">
+        <!-- Start Search Popap -->
+        <div class="search__area">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-12" >
+                        <div class="search__inner">
+                            <form action="#" method="get">
+                                <input placeholder="Search here... " type="text">
+                                <button type="submit"></button>
+                            </form>
+                            <div class="search__close__btn">
+                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            White Shirt Pleat
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-                    </div>
-                </li>
-
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="images/item-cart-02.jpg" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Converse All Star
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-                    </div>
-                </li>
-
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="images/item-cart-03.jpg" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Nixon Porter Leather
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="w-full">
-                <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
-                </div>
-
-                <div class="header-cart-buttons flex-w w-full">
-                    <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        View Cart
-                    </a>
-
-                    <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        Check Out
-                    </a>
                 </div>
             </div>
         </div>
+        <!-- End Search Popap -->
+        <!-- Start Offset MEnu -->
+        <div class="offsetmenu">
+            <div class="offsetmenu__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="off__contact">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetu adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
+                </div>
+                <ul class="sidebar__thumd">
+                    <li><a href="#"><img src="images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
+                    <li><a href="#"><img src="images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
+                </ul>
+                <div class="offset__widget">
+                    <div class="offset__single">
+                        <h4 class="offset__title">Language</h4>
+                        <ul>
+                            <li><a href="#"> Engish </a></li>
+                            <li><a href="#"> French </a></li>
+                            <li><a href="#"> German </a></li>
+                        </ul>
+                    </div>
+                    <div class="offset__single">
+                        <h4 class="offset__title">Currencies</h4>
+                        <ul>
+                            <li><a href="#"> USD : Dollar </a></li>
+                            <li><a href="#"> EUR : Euro </a></li>
+                            <li><a href="#"> POU : Pound </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="offset__sosial__share">
+                    <h4 class="offset__title">Follow Us On Social</h4>
+                    <ul class="off__soaial__link">
+                        <li><a class="bg--twitter" href="#"  title="Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
+
+                        <li><a class="bg--instagram" href="#" title="Instagram"><i class="zmdi zmdi-instagram"></i></a></li>
+
+                        <li><a class="bg--facebook" href="#" title="Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
+
+                        <li><a class="bg--googleplus" href="#" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a></li>
+
+                        <li><a class="bg--google" href="#" title="Google"><i class="zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Offset MEnu -->
+        <!-- Start Cart Panel -->
+        <div class="shopping__cart">
+            <div class="shopping__cart__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="shp__cart__wrap">
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/1.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$105.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/2.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">Brone Candle</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$25.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="shoping__total">
+                    <li class="subtotal">Subtotal:</li>
+                    <li class="total__price">$130.00</li>
+                </ul>
+                <ul class="shopping__btn">
+                    <li><a href="cart.html">View Cart</a></li>
+                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Cart Panel -->
     </div>
-</div>
-
-
-<!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">
-        Contact
-    </h2>
-</section>
-
-
-<!-- Content page -->
-<section class="bg0 p-t-104 p-b-116">
-    <div class="container">
-        <div class="flex-w flex-tr">
-            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                <form>
-                    <h4 class="mtext-105 cl2 txt-center p-b-30">
-                        Send Us A Message
-                    </h4>
-
-                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Your Email Address">
-                        <img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
-                    </div>
-
-                    <div class="bor8 m-b-30">
-                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
-                    </div>
-
-                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-                        Submit
-                    </button>
-                </form>
-            </div>
-
-            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                <div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-map-marker"></span>
-						</span>
-
-                    <div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Địa chỉ
-							</span>
-
-                        <p class="stext-115 cl6 size-213 p-t-18">
-                            Số 1 khu phố Bình Hòa, phường Lái Thiêu, Thuận An, Bình Dương
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-phone-handset"></span>
-						</span>
-
-                    <div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Số điện thoại
-							</span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            +1 800 1236879
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-
-                    <div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Email
-							</span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            mapmapstore@gmail.com
-                        </p>
+    <!-- End Offset Wrapper -->
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Contact US</h2>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">Contact US</span>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-
-<!-- Map -->
-<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d411.7905635629731!2d106.7069876067998!3d10.915384244087292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d7a74d240e29%3A0x633497fe01250a0d!2sNAPOLI%20COFFEE!5e0!3m2!1svi!2ssg!4v1635686949987!5m2!1svi!2ssg" width="2000" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-
-
-
-<!-- Footer -->
+    <!-- End Bradcaump area -->
+    <!-- Start Contact Area -->
+    <section class="htc__contact__area ptb--120 bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <div class="htc__contact__container">
+                        <div class="htc__contact__address">
+                            <h2 class="contact__title">contact info</h2>
+                            <div class="contact__address__inner">
+                                <!-- Start Single Adress -->
+                                <div class="single__contact__address">
+                                    <div class="contact__icon">
+                                        <span class="ti-location-pin"></span>
+                                    </div>
+                                    <div class="contact__details">
+                                        <p>Location : <br> 77, seventh avenue, Brat road USA.</p>
+                                    </div>
+                                </div>
+                                <!-- End Single Adress -->
+                            </div>
+                            <div class="contact__address__inner">
+                                <!-- Start Single Adress -->
+                                <div class="single__contact__address">
+                                    <div class="contact__icon">
+                                        <span class="ti-mobile"></span>
+                                    </div>
+                                    <div class="contact__details">
+                                        <p> Phone : <br><a href="#">+012 345 678 102 </a></p>
+                                    </div>
+                                </div>
+                                <!-- End Single Adress -->
+                                <!-- Start Single Adress -->
+                                <div class="single__contact__address">
+                                    <div class="contact__icon">
+                                        <span class="ti-email"></span>
+                                    </div>
+                                    <div class="contact__details">
+                                        <p> Mail :<br><a href="#">info@example.com</a></p>
+                                    </div>
+                                </div>
+                                <!-- End Single Adress -->
+                            </div>
+                        </div>
+                        <div class="contact-form-wrap">
+                            <div class="contact-title">
+                                <h2 class="contact__title">Get In Touch</h2>
+                            </div>
+                            <form id="contact-form" action="mail.php" method="post">
+                                <div class="single-contact-form">
+                                    <div class="contact-box name">
+                                        <input type="text" name="name" placeholder="Your Nme*">
+                                        <input type="email" name="email" placeholder="Mail*">
+                                    </div>
+                                </div>
+                                <div class="single-contact-form">
+                                    <div class="contact-box subject">
+                                        <input type="text" name="subject" placeholder="Subject*">
+                                    </div>
+                                </div>
+                                <div class="single-contact-form">
+                                    <div class="contact-box message">
+                                        <textarea name="message"  placeholder="Massage*"></textarea>
+                                    </div>
+                                </div>
+                                <div class="contact-btn">
+                                    <button type="submit" class="fv-btn">SEND</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-output">
+                            <p class="form-messege"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                    <div class="map-contacts">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d411.7905635629731!2d106.7069876067998!3d10.915384244087292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d7a74d240e29%3A0x633497fe01250a0d!2sNAPOLI%20COFFEE!5e0!3m2!1svi!2ssg!4v1635686949987!5m2!1svi!2ssg" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @include('clients.footer')
-<!-- Back to top -->
-<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
+    <!-- End Footer Area -->
 </div>
-
-<script>
-    $(".js-select2").each(function(){
-        $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
-        });
-    })
-</script>
-<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-
-<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-
-<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-
-<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
-<script src="{{asset('js/slick-custom.js')}}"></script>
-
-<script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
-<script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
-
-<script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-<script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<!-- Body main wrapper end -->
+<!-- QUICKVIEW PRODUCT -->
+<div id="quickview-wrapper">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal__container" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-product">
+                        <!-- Start product images -->
+                        <div class="product-images">
+                            <div class="main-image images">
+                                <img alt="big images" src="images/product/big-img/1.jpg">
+                            </div>
+                        </div>
+                        <!-- end product images -->
+                        <div class="product-info">
+                            <h1>Simple Fabric Bags</h1>
+                            <div class="rating__and__review">
+                                <ul class="rating">
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                </ul>
+                                <div class="review">
+                                    <a href="#">4 customer reviews</a>
+                                </div>
+                            </div>
+                            <div class="price-box-3">
+                                <div class="s-price-box">
+                                    <span class="new-price">$17.20</span>
+                                    <span class="old-price">$45.00</span>
+                                </div>
+                            </div>
+                            <div class="quick-desc">
+                                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
+                            </div>
+                            <div class="select__color">
+                                <h2>Select color</h2>
+                                <ul class="color__list">
+                                    <li class="red"><a title="Red" href="#">Red</a></li>
+                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                </ul>
+                            </div>
+                            <div class="select__size">
+                                <h2>Select size</h2>
+                                <ul class="color__list">
+                                    <li class="l__size"><a title="L" href="#">L</a></li>
+                                    <li class="m__size"><a title="M" href="#">M</a></li>
+                                    <li class="s__size"><a title="S" href="#">S</a></li>
+                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
+                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
+                                </ul>
+                            </div>
+                            <div class="social-sharing">
+                                <div class="widget widget_socialsharing_widget">
+                                    <h3 class="widget-title-modal">Share this product</h3>
+                                    <ul class="social-icons">
+                                        <li><a target="_blank" title="rss" href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
+                                        <li><a target="_blank" title="Linkedin" href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Tumblr" href="#" class="tumblr social-icon"><i class="zmdi zmdi-tumblr"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="addtocart-btn">
+                                <a href="#">Add to cart</a>
+                            </div>
+                        </div><!-- .product-info -->
+                    </div><!-- .modal-product -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+    <!-- END Modal -->
+</div>
+<script src="{{asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('js/slick.min.js')}}"></script>
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/waypoints.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-<script>
-    $('.js-pscroll').each(function(){
-        $(this).css('position','relative');
-        $(this).css('overflow','hidden');
-        var ps = new PerfectScrollbar(this, {
-            wheelSpeed: 1,
-            scrollingThreshold: 1000,
-            wheelPropagation: false,
-        });
-
-        $(window).on('resize', function(){
-            ps.update();
-        })
-    });
-</script>
 
 </body>
+
 </html>

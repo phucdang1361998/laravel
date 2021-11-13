@@ -1,565 +1,607 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <title>Trang chủ</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tmart-Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
-
-    {{--	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">--}}
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('apple-touch-icon.png')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/core.css')}}">
+    <link rel="stylesheet" href="{{asset('css/shortcode/shortcodes.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
-<body class="animsition">
 
-<!-- Header -->
-@include('clients.header')
-<!-- Cart -->
-<div class="wrap-header-cart js-panel-cart">
-    <div class="header-cart flex-col-l p-l-65 p-r-25">
-        <div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Giỏ hàng
-				</span>
-        </div>
-    </div>
-</div>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-
-<!-- Slider -->
-<section class="section-slide">
-    <div class="wrap-slick1">
-        <div class="slick1">
-            @foreach($slider as $slDetail)
-                <div class="item-slick1" style='background-image: url({{$slDetail['image']}});'>
-                    <div class="container h-full">
-                        <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft"
-                                 data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									{{$slDetail['title1']}}
-								</span>
-                            </div>
-
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight"
-                                 data-delay="800">
-                                <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                    {{$slDetail['title2']}}
-                                </h2>
-                            </div>
-
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-                                <a href="{{route('clients.product.index')}}"
-                                   class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Sản phẩm
-                                </a>
+<!-- Body main wrapper start -->
+<div class="wrapper fixed__footer">
+    @include('clients.header')
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    <div class="offset__wrapper">
+        <!-- Start Search Popap -->
+        <div class="search__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search__inner">
+                            <form action="{{route('clients.product.index')}}" method="get">
+                                <input placeholder="Tìm kiếm sản phẩm" type="text" name="name">
+                                <button type="submit"></button>
+                            </form>
+                            <div class="search__close__btn">
+                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-
-<!-- Banner -->
-<div class="sec-banner bg0 p-t-80 p-b-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="images/banner-01.jpg" alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									Spring 2018
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Shop Now
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="images/banner-02.jpg" alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									Spring 2018
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Shop Now
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									New Trend
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Shop Now
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
-    </div>
-</div>
 
-
-<section class="bg0 p-t-23 p-b-140">
-    <div class="container">
-        <div class="p-b-10">
-            <h3 class="ltext-103 cl5">
-                Giảm giá
-            </h3>
-        </div>
-
-        <div class="row isotope-grid">
-            @foreach($product as $key => $proDtl)
-                @if($proDtl['sale_off'] == 0)
-                    @continue
-                @endif
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$proDtl->type->code}}">
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img src="{{$proDtl['image']}}" alt="IMG-PRODUCT">
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+        <div class="shopping__cart">
+            <div class="shopping__cart__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="shp__cart__wrap">
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/1.jpg" alt="product images">
                             </a>
                         </div>
-
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="{{route('clients.product.detail', ['id' => $proDtl['id']])}}"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    {{$proDtl['name']}}
-                                </a>
-
-                                <span class="stext-105 cl3">
-									<del>{{number_format($proDtl['price']).' '.'VNĐ'}}</del>
-								</span>
-                            </div>
-
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <span class="text-105 cl3" data-label1="Hot">
-									{{number_format($proDtl['price_sale']).' '.'VNĐ'}}
-								</span>
-                            </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$105.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-<!-- Product -->
-<section class="bg0 p-t-23 p-b-140">
-    <div class="container">
-        <div class="p-b-10">
-            <h3 class="ltext-103 cl5">
-                Sản phẩm
-            </h3>
-        </div>
-
-        <div class="flex-w flex-sb-m p-b-52">
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                    All Products
-                </button>
-                @foreach($category as $detail)
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                            data-filter="{{'.'.$detail['code']}}">
-                        {{$detail['name']}}
-                    </button>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="row isotope-grid">
-            @foreach($product as $key => $proDtl)
-                @if($key == 12)
-                    @break;
-                @endif
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$proDtl->type->code}}">
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img src="{{$proDtl['image']}}" alt="IMG-PRODUCT">
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product/sm-img/2.jpg" alt="product images">
                             </a>
                         </div>
-
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="{{route('clients.product.detail', ['id' => $proDtl['id']])}}"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    {{$proDtl['name']}}
-                                </a>
-
-                                <span class="stext-105 cl3">
-									{{number_format($proDtl['price']).' '.'VNĐ'}}
-								</span>
-                            </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">Brone Candle</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$25.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
                         </div>
                     </div>
                 </div>
-            @endforeach
+                <ul class="shoping__total">
+                    <li class="subtotal">Subtotal:</li>
+                    <li class="total__price">$130.00</li>
+                </ul>
+                <ul class="shopping__btn">
+                    <li><a href="cart.html">View Cart</a></li>
+                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
         </div>
+        <!-- End Cart Panel -->
     </div>
-</section>
-
-
-<!-- Footer -->
-@include('clients.footer')
-
-<!-- Back to top -->
-<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-</div>
-
-<!-- Modal1 -->
-<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-    <div class="overlay-modal1 js-hide-modal1"></div>
-
-    <div class="container">
-        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                <img src="images/icons/icon-close.png" alt="CLOSE">
-            </button>
-
+    <!-- End Offset Wrapper -->
+    <!-- Start Feature Product -->
+    <section class="categories-slider-area bg__white">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-7 p-b-30">
-                    <div class="p-l-25 p-r-30 p-lr-0-lg">
-                        <div class="wrap-slick3 flex-sb flex-w">
-                            <div class="wrap-slick3-dots"></div>
-                            <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                            <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="images/product-detail-01.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
+                <!-- Start Left Feature -->
+                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12 float-left-style">
+                    <!-- Start Slider Area -->
+                    <div class="slider__container slider--one">
+                        <div class="slider__activation__wrap owl-carousel owl-theme">
+                            <!-- Start Single Slide -->
+                            @foreach($slider as $sliDtl)
+                                <div class="slide slider__full--screen slider-height-inherit slider-text-right"
+                                     style="background: rgba(0, 0, 0, 0) url({{$sliDtl['image']}}) no-repeat scroll center center / cover ;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-10 col-lg-8 col-md-offset-2 col-lg-offset-4 col-sm-12 col-xs-12">
+                                                <div class="slider__inner">
+                                                    <h1>{{$sliDtl['title1']}}<span
+                                                            class="text--theme">{{$sliDtl['title2']}}</span></h1>
+                                                    <div class="slider__btn">
+                                                        <a class="htc__btn" href="{{route('clients.product.index')}}">shop
+                                                            now</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="images/product-detail-02.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <!-- Start Slider Area -->
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
+                    <div class="categories-menu mrg-xs">
+                        <div class="category-heading">
+                            <h3> Browse Categories</h3>
+                        </div>
+                        <div class="category-menu-list">
+                            <ul>
+                                <li><a href="#"><img alt="" src="images/icons/thum2.png"> Women’s Clothing <i
+                                            class="zmdi zmdi-chevron-right"></i></a>
+                                    <div class="category-menu-dropdown">
+                                        <div class="category-part-1 category-common mb--30">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-part-2 category-common mb--30">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-part-3 category-common">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-part-4 category-common">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="images/product-detail-03.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
+                                </li>
+                                <li><a href="#"><img alt="" src="images/icons/thum3.png"> Man Fashion <i
+                                            class="zmdi zmdi-chevron-right"></i></a>
+                                    <div class="category-menu-dropdown">
+                                        <div class="category-part-1 category-common2 mb--30">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-part-2 category-common2 mb--30">
+                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-part-3 category-common2 mb--30">
+                                            <h4 class="categories-subtitle">dress</h4>
+                                            <ul>
+                                                <li><a href="#"> Men’s Clothing</a></li>
+                                                <li><a href="#"> Computer & Office</a></li>
+                                                <li><a href="#"> Jewelry & Watches</a></li>
+                                                <li><a href="#"> Bags & Shoes</a></li>
+                                                <li><a href="#"> Phones & Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-banner-img">
+                                            <a href="single-product.html">
+                                                <img src="images/feature-img/5.jpg" alt="">
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </li>
+                                <li><a href="#"><img alt="" src="images/icons/thum4.png"> Computer & Office <i
+                                            class="zmdi zmdi-chevron-right"></i></a>
+                                    <div class="category-menu-dropdown">
+                                        <div class="category-menu-dropdown-top">
+                                            <div class="category-part-1 category-common2 mb--30">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-2 category-common2 mb--30">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-3 category-common2 mb--30">
+                                                <h4 class="categories-subtitle">Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="category-menu-dropdown-bottom">
+                                            <div class="single-category-brand">
+                                                <a href="#"><img src="images/brand/6.png" alt=""></a>
+                                            </div>
+                                            <div class="single-category-brand">
+                                                <a href="#"><img src="images/brand/7.png" alt=""></a>
+                                            </div>
+                                            <div class="single-category-brand">
+                                                <a href="#"><img src="images/brand/8.png" alt=""></a>
+                                            </div>
+                                            <div class="single-category-brand">
+                                                <a href="#"><img src="images/brand/9.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#"><img alt="" src="images/icons/thum5.png"> Jewelry & Watches <i
+                                            class="zmdi zmdi-chevron-right"></i></a>
+                                    <div class="category-menu-dropdown">
+                                        <div class="category-menu-dropdown-left">
+                                            <div class="category-part-1 category-common mb--30">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-2 category-common mb--30">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-3 category-common">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-4 category-common">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="category-menu-dropdown-right">
+                                            <div class="menu-right-img">
+                                                <a href="#"><img src="images/feature-img/2.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#"><img alt="" src="images/icons/thum6.png"> Men’s Clothing <i
+                                            class="zmdi zmdi-chevron-right"></i></a>
+                                    <div class="category-menu-dropdown">
+                                        <div class="category-menu-dropdown-left">
+                                            <div class="category-part-1 category-common">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones </a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="category-part-2 category-common">
+                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
+                                                <ul>
+                                                    <li><a href="#"> Men’s Clothing</a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Jewelry & Watches</a></li>
+                                                    <li><a href="#"> Bags & Shoes</a></li>
+                                                    <li><a href="#"> Phones </a></li>
+                                                    <li><a href="#"> Computer & Office</a></li>
+                                                    <li><a href="#"> Phones & Accessories</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="category-menu-dropdown-right">
+                                            <div class="menu-right-img">
+                                                <a href="#"><img src="images/feature-img/1.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#"><img alt="" src="images/icons/thum7.png"> Bags & Shoes</a></li>
+                                <li><a href="#"><img alt="" src="images/icons/thum8.png"> Toys & Kids & Baby</a></li>
+                                <li><a href="#"><img alt="" src="images/icons/thum9.png"> Automobiles </a></li>
+                                <li><a href="#"><img alt="" src="images/icons/thum10.png"> Jewelry & Watches</a></li>
+                                <li><a href="#"><img alt="" src="images/icons/thum2.png"> Consumer Electronics</a></li>
+                                <li><a href="#"><img alt="" src="images/icons/thum3.png"> all Accessories</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <!-- End Left Feature -->
+            </div>
+        </div>
+    </section>
 
-                <div class="col-md-6 col-lg-5 p-b-30">
-                    <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            Lightweight Jacket
-                        </h4>
+    @foreach($category as $cateDtl)
+        <div class="only-banner ptb--100 bg__white">
+            <div class="container">
+                <div class="only-banner-img">
+                    <a href="shop-sidebar.html"><img src="images/new-product/3.jpg" alt="new product"></a>
+                </div>
+            </div>
+        </div>
 
-                        <span class="mtext-106 cl2">
-								$58.79
-							</span>
-
-                        <p class="stext-102 cl3 p-t-23">
-                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare
-                            feugiat.
-                        </p>
-
-                        <!--  -->
-                        <div class="p-t-33">
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Size
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Size S</option>
-                                            <option>Size M</option>
-                                            <option>Size L</option>
-                                            <option>Size XL</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
+        <section class="htc__product__area bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="product-categories-all">
+                            <div class="product-categories-title">
+                                <h3>{{$cateDtl['name']}}</h3>
                             </div>
-
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Color
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Red</option>
-                                            <option>Blue</option>
-                                            <option>White</option>
-                                            <option>Grey</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-204 flex-w flex-m respon6-next">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
-
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                               name="num-product" value="1">
-
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
-                                    </button>
-                                </div>
+                            <div class="product-categories-menu">
+                                <ul>
+                                    <li><a href="#">awesome Rings</a></li>
+                                    <li><a href="#">Hot Earrings</a></li>
+                                    <li><a href="#">Jewelry Sets</a></li>
+                                    <li><a href="#">Beads Jewelry</a></li>
+                                    <li><a href="#">Men's Watches</a></li>
+                                    <li><a href="#">Women’s Watches</a></li>
+                                    <li><a href="#">Popular Bracelets</a></li>
+                                    <li><a href="#"> Pendant Necklaces</a></li>
+                                    <li><a href="#">Children's Watches</a></li>
+                                </ul>
                             </div>
                         </div>
-
-                        <!--  -->
-                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                            <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#"
-                                   class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                   data-tooltip="Add to Wishlist">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </a>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="product-style-tab">
+                            <div class="product-tab-list">
+                                <!-- Nav tabs -->
+                                <ul class="tab-style" role="tablist">
+                                    <li class="active">
+                                        <a href="#home1" data-toggle="tab">
+                                            <div class="tab-menu-text">
+                                                <h4>latest </h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#home2" data-toggle="tab">
+                                            <div class="tab-menu-text">
+                                                <h4>best sale </h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#home3" data-toggle="tab">
+                                            <div class="tab-menu-text">
+                                                <h4>top rated</h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#home4" data-toggle="tab">
+                                            <div class="tab-menu-text">
+                                                <h4>on sale</h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Google Plus">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
+                            <div class="tab-content another-product-style jump">
+                                <div class="tab-pane active" id="home1">
+                                    <div class="row">
+                                        <div class="product-slider-active owl-carousel">
+                                            @foreach($product as $proDtl)
+                                                <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                                    <div class="product">
+                                                        <div class="product__inner">
+                                                            <div class="pro__thumb">
+                                                                <a href="#">
+                                                                    <img src="{{$proDtl['image']}}"
+                                                                         alt="product images">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product__hover__info">
+                                                                <ul class="product__action">
+                                                                    <li><a data-toggle="modal"
+                                                                           data-target="#productModal"
+                                                                           title="Quick View"
+                                                                           class="quick-view modal-view detail-link"
+                                                                           href="#"><span class="ti-plus"></span></a>
+                                                                    </li>
+                                                                    <li><a title="Add TO Cart" href="cart.html"><span
+                                                                                class="ti-shopping-cart"></span></a>
+                                                                    </li>
+                                                                    <li><a title="Wishlist" href="wishlist.html"><span
+                                                                                class="ti-heart"></span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__details">
+                                                            <h2><a href="product-details.html">{{$proDtl['name']}}</a>
+                                                            </h2>
+                                                            <ul class="product__price">
+                                                                @if($proDtl['sale_off'])
+                                                                    <li class="old__price">{{number_format($proDtl['price'])}}</li>
+                                                                    <li class="new__price">{{number_format($proDtl['price_sale'])}}</li>
+                                                                @else
+                                                                    <li class="new__price">{{number_format($proDtl['price'])}}</li>
+                                                                @endif
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    @endforeach
+    @include('clients.footer')
 </div>
-
-<!--===============================================================================================-->
-
-<script>
-    $(".js-select2").each(function () {
-        $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
-        });
-    });
-</script>
-<!--===============================================================================================-->
-
-<script>
-    $('.parallax100').parallax100();
-</script>
-<!--===============================================================================================-->
-
-<script>
-    $('.gallery-lb').each(function () { // the containers for all your galleries
-        $(this).magnificPopup({
-            delegate: 'a', // the selector for gallery item
-            type: 'image',
-            gallery: {
-                enabled: true
-            },
-            mainClass: 'mfp-fade'
-        });
-    });
-</script>
-<!--===============================================================================================-->
-
-<script>
-    $('.js-addwish-b2').on('click', function (e) {
-        e.preventDefault();
-    });
-
-    $('.js-addwish-b2').each(function () {
-        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass('js-addedwish-b2');
-            $(this).off('click');
-        });
-    });
-
-    $('.js-addwish-detail').each(function () {
-        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass('js-addedwish-detail');
-            $(this).off('click');
-        });
-    });
-
-    /*---------------------------------------------*/
-
-    $('.js-addcart-detail').each(function () {
-        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
-        });
-    });
-
-</script>
-<!--===============================================================================================-->
-<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-
-<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-
-<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-
-<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
-<script src="{{asset('js/slick-custom.js')}}"></script>
-
-<script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
-<script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
-
-<script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-<script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<!-- Body main wrapper end -->
+<!-- QUICKVIEW PRODUCT -->
+<div id="quickview-wrapper">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal__container" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-product">
+                        <!-- Start product images -->
+                        <div class="product-images">
+                            <div class="main-image images">
+                                <img alt="big images" src="images/product/big-img/1.jpg">
+                            </div>
+                        </div>
+                        <!-- end product images -->
+                        <div class="product-info">
+                            <h1>Simple Fabric Bags</h1>
+                            <div class="rating__and__review">
+                                <ul class="rating">
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                </ul>
+                                <div class="review">
+                                    <a href="#">4 customer reviews</a>
+                                </div>
+                            </div>
+                            <div class="price-box-3">
+                                <div class="s-price-box">
+                                    <span class="new-price">$17.20</span>
+                                    <span class="old-price">$45.00</span>
+                                </div>
+                            </div>
+                            <div class="quick-desc">
+                                Designed for simplicity and made from high quality materials. Its sleek geometry and
+                                material combinations creates a modern look.
+                            </div>
+                            <div class="select__color">
+                                <h2>Select color</h2>
+                                <ul class="color__list">
+                                    <li class="red"><a title="Red" href="#">Red</a></li>
+                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                </ul>
+                            </div>
+                            <div class="select__size">
+                                <h2>Select size</h2>
+                                <ul class="color__list">
+                                    <li class="l__size"><a title="L" href="#">L</a></li>
+                                    <li class="m__size"><a title="M" href="#">M</a></li>
+                                    <li class="s__size"><a title="S" href="#">S</a></li>
+                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
+                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
+                                </ul>
+                            </div>
+                            <div class="social-sharing">
+                                <div class="widget widget_socialsharing_widget">
+                                    <h3 class="widget-title-modal">Share this product</h3>
+                                    <ul class="social-icons">
+                                        <li><a target="_blank" title="rss" href="#" class="rss social-icon"><i
+                                                    class="zmdi zmdi-rss"></i></a></li>
+                                        <li><a target="_blank" title="Linkedin" href="#" class="linkedin social-icon"><i
+                                                    class="zmdi zmdi-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="zmdi zmdi-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Tumblr" href="#" class="tumblr social-icon"><i
+                                                    class="zmdi zmdi-tumblr"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="zmdi zmdi-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="addtocart-btn">
+                                <a href="#">Add to cart</a>
+                            </div>
+                        </div><!-- .product-info -->
+                    </div><!-- .modal-product -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+    <!-- END Modal -->
+</div>
+<script src="{{asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('js/slick.min.js')}}"></script>
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/waypoints.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-<script>
-    $('.js-pscroll').each(function () {
-        $(this).css('position', 'relative');
-        $(this).css('overflow', 'hidden');
-        var ps = new PerfectScrollbar(this, {
-            wheelSpeed: 1,
-            scrollingThreshold: 1000,
-            wheelPropagation: false,
-        });
-
-        $(window).on('resize', function () {
-            ps.update();
-        })
-    });
-</script>
-<!--===============================================================================================-->
-
-
 </body>
+
 </html>

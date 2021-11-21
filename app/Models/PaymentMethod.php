@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class PaymentMethod extends Model
 {
     use HasFactory;
 
-    protected $table = 'slider';
+    protected $table = 'payment_method';
 
-    const IMAGE_PATH = 'images/slider/';
+    protected $guarded = [];
 }

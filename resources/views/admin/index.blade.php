@@ -112,14 +112,14 @@ $image = \Illuminate\Support\Facades\Session::get('image');
 
                 @if($routeName == 'admin.slider.index' || $routeName == 'admin.slider.create' || $routeName == 'admin.slider.edit')
                     <li class="current">
-                        <a class="waves-effect parent-item" href="{{route('admin.category.index')}}">
+                        <a class="waves-effect parent-item" href="{{route('admin.slider.index')}}">
                             <i class="menu-icon mdi mdi-fire"></i>
                             <span>Quản lý Slider</span></a>
 
                     </li>
                 @else
                     <li>
-                        <a class="waves-effect parent-item" href="{{route('admin.category.index')}}">
+                        <a class="waves-effect parent-item" href="{{route('admin.slider.index')}}">
                             <i class="menu-icon mdi mdi-fire"></i>
                             <span>Quản lý Slider</span></a>
 
@@ -142,17 +142,31 @@ $image = \Illuminate\Support\Facades\Session::get('image');
 
                 @if($routeName == 'admin.order.index' || $routeName == 'admin.order.create' || $routeName == 'admin.order.edit')
                     <li class="current">
-                        <a class="waves-effect" href="{{route('admin.category.index')}}">
+                        <a class="waves-effect" href="{{route('admin.orders.index')}}">
                             <i class="menu-icon mdi mdi-email"></i>
-                            <span>Quản lý Blog</span></a>
+                            <span>Quản lý đơn hàng</span></a>
                     </li>
                 @else
                     <li>
-                        <a class="waves-effect" href="{{route('admin.category.index')}}">
+                        <a class="waves-effect" href="{{route('admin.orders.index')}}">
                             <i class="menu-icon mdi mdi-email"></i>
                             <span>Quản lý đơn hàng</span></a>
                     </li>
                 @endif
+
+                    @if($routeName == 'admin.support.index' || $routeName == 'admin.support.create' || $routeName == 'admin.order.edit')
+                        <li class="current">
+                            <a class="waves-effect" href="{{route('admin.support.index')}}">
+                                <i class="menu-icon mdi mdi-email"></i>
+                                <span>Hỗ trợ</span></a>
+                        </li>
+                    @else
+                        <li>
+                            <a class="waves-effect" href="{{route('admin.support.index')}}">
+                                <i class="menu-icon mdi mdi-email"></i>
+                                <span>Hỗ trợ</span></a>
+                        </li>
+                    @endif
             </ul>
         </div>
         <!-- /.navigation -->

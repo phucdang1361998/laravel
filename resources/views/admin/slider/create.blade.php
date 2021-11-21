@@ -1,43 +1,58 @@
 @extends('admin.index')
 
 @section('content')
-    <section class="wrapper">
-        <div class="form-w3layouts">
-            <!-- page start-->
-            <!-- page start-->
-            <div class="row">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Thêm giới thiệu
-                        </header>
-                        @if(isset($message))
-                            <td>
-                                {{$message}}
-                            </td>
-                        @endif
-                        <div class="panel-body">
-                            <div class="position-center">
-                                <form method="POST" enctype="multipart/form-data"
-                                      action="{{route('admin.about.create')}}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="title">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Hình ảnh</label>
-                                        <input type="file" class="form-control" name="image"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Nội dung</label>
-                                        <input type="text" class="form-control" name="description">
-                                    </div>
-                                    <button type="submit" class="btn btn-info">Lưu</button>
-                                </form>
-                            </div>
+    <section id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+                <div class="col-lg-6 col-xs-12">
+                    <div class="box-content card white">
+                        <h4 class="box-title">Tạo mới sliderm</h4>
+                        <!-- /.box-title -->
+                        <div class="card-content">
+                            <form method="post" action="{{route('admin.slider.store')}}" enctype="multipart/form-data">
+                                @csrf
+                                @if($message)
+                                    @if(is_array($message))
+                                        @foreach($message as $detailMes)
+                                            <p style="color: red">{{$detailMes}}</p>
+                                        @endforeach
+                                    @else
+                                        <p style="color: red">{{$message}}</p>
+                                    @endif
+                                @endif
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tiêu đề 1</label>
+                                    <span style="color: red">(*)</span>
+                                    <input type="text" class="form-control" name="title1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Tiêu đề 2</label>
+                                    <span style="color: red">(*)</span>
+                                    <input type="text" class="form-control" name="title2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Trang chứa slider</label>
+                                    <span style="color: red">(*)</span>
+                                    <select class="form-control input-sm m-bot15" name="page">
+                                            <option value="{{''}}">Trang chủ</option>
+                                            <option value="{{'product'}}">Sản phẩm</option>
+                                            <option value="{{'about'}}">Giới thiệu</option>
+                                            <option value="{{'contact'}}">Liên hệ</option>
+                                            <option value="{{'shipping-cart'}}">Giỏ hàng</option>
+                                            <option value="{{'checkout'}}">Thanh toán</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Hình ảnh</label>
+                                    <input type="file" name="image">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Lưu
+                                </button>
+                            </form>
                         </div>
-                    </section>
+                        <!-- /.card-content -->
+                    </div>
+                    <!-- /.box-content -->
                 </div>
             </div>
         </div>

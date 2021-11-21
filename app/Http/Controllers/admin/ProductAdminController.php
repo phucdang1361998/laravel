@@ -6,14 +6,11 @@ use App\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Console\Input\Input;
 
 class ProductAdminController extends Controller
 {
@@ -121,7 +118,7 @@ class ProductAdminController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.product.index', ['name' => $attributes['name']]);
+        return redirect()->route('admin.product.index');
     }
 
     public function edit(Request $request, $id)

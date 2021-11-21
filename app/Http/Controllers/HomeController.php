@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $product = Product::all();
 
-        $slider = Slider::all();
+        $slider = Slider::where('page', '')->get();
 
         return view('clients.index', [
             'category' => $category,

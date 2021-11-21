@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class OrderDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'slider';
+    protected $table = 'order_details';
 
-    const IMAGE_PATH = 'images/slider/';
+    protected $guarded = [];
+
+    const IMAGE_PATH = 'images/about/';
 }

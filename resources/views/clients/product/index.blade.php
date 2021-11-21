@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+$cart = \Illuminate\Support\Facades\Session::get('cart');
+?>
+    <!doctype html>
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
@@ -54,44 +57,40 @@
                     <a href="#"><i class="zmdi zmdi-close"></i></a>
                 </div>
                 <div class="shp__cart__wrap">
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/1.jpg" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$105.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/2.jpg" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">Brone Candle</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$25.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
+                    @if($cart)
+                        <?php
+                        $total = array_reduce($cart, function ($total, $value) {
+                            return $total + $value['price'];
+                        }, 0)
+                        ?>
+                        @foreach($cart as $cartDtl)
+                            <div class="shp__single__product">
+                                <div class="shp__pro__thumb">
+                                    <a href="#">
+                                        <img src="{{asset($cartDtl['image'])}}" alt="product images">
+                                    </a>
+                                </div>
+                                <div class="shp__pro__details">
+                                    <h2>
+                                        <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
+                                    </h2>
+                                    <span class="quantity">{{0}}</span>
+                                    <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
+                                </div>
+                                <div class="remove__btn">
+                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
                 </div>
                 <ul class="shoping__total">
-                    <li class="subtotal">Subtotal:</li>
-                    <li class="total__price">$130.00</li>
+                    <li class="subtotal">Tổng tiền:</li>
+                    <li class="total__price">{{number_format($total)}}</li>
                 </ul>
+                @endif
                 <ul class="shopping__btn">
-                    <li><a href="cart.html">View Cart</a></li>
-                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                    <li><a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a></li>
+                    <li class="shp__checkout"><a href="{{route('clients.checkout.index')}}">Thanh toán</a></li>
                 </ul>
             </div>
         </div>
@@ -99,26 +98,28 @@
     </div>
     <!-- End Offset Wrapper -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area"
-         style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-        <div class="ht__bradcaump__wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">Sản Phẩm</h2>
-                            <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="{{route('clients.index')}}">Trang chủ</a>
-                                <span class="brd-separetor">/</span>
-                                <span class="breadcrumb-item active">Sản phẩm</span>
-                            </nav>
+    @foreach($slider as $slDtl)
+        <div class="ht__bradcaump__area"
+             style="background: rgba(0, 0, 0, 0) url({{asset($slDtl['image'])}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">Sản Phẩm</h2>
+                                <nav class="bradcaump-inner">
+                                    <a class="breadcrumb-item" href="{{route('clients.index')}}">Trang chủ</a>
+                                    <span class="brd-separetor">/</span>
+                                    <span class="breadcrumb-item active">Sản phẩm</span>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Bradcaump area -->
+    @endforeach
+<!-- End Bradcaump area -->
     <!-- Start Our Product Area -->
     <section class="htc__product__area shop__page ptb--130 bg__white">
         <div class="container">
@@ -227,9 +228,10 @@
                                             <ul class="product__action">
                                                 <li><a data-toggle="modal" data-target="#productModal"
                                                        title="Quick View"
-                                                       class="quick-view modal-view detail-link" href="#"><span
+                                                       class="quick-view modal-view detail-link" href="#" data-product="{{$proDtl}}"><span
                                                             class="ti-plus"></span></a></li>
-                                                <li><a title="Add TO Cart" href="cart.html"><span
+                                                <li><a title="Add TO Cart"
+                                                       href="{{route('clients.shopping-cart.insert',['id' => $proDtl])}}"><span
                                                             class="ti-shopping-cart"></span></a></li>
                                                 <li><a title="Wishlist" href="wishlist.html"><span
                                                             class="ti-heart"></span></a>
@@ -259,9 +261,7 @@
             <!-- Start Load More BTn -->
             <div class="row mt--60">
                 <div class="col-md-12">
-                    <div class="htc__loadmore__btn">
-                        <a href="#">load more</a>
-                    </div>
+                    <div class="row">{{ $product->links('vendor.pagination.clients') }}</div>
                 </div>
             </div>
             <!-- End Load More BTn -->

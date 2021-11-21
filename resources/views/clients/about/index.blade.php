@@ -1,3 +1,6 @@
+<?php
+$cart = \Illuminate\Support\Facades\Session::get('cart');
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -21,7 +24,8 @@
 
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Body main wrapper start -->
@@ -32,9 +36,9 @@
     <div class="offset__wrapper">
         <!-- Start Search Popap -->
         <div class="search__area">
-            <div class="container" >
-                <div class="row" >
-                    <div class="col-md-12" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="search__inner">
                             <form action="#" method="get">
                                 <input placeholder="Search here... " type="text">
@@ -48,66 +52,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Search Popap -->
-        <!-- Start Offset MEnu -->
-        <div class="offsetmenu">
-            <div class="offsetmenu__inner">
-                <div class="offsetmenu__close__btn">
-                    <a href="#"><i class="zmdi zmdi-close"></i></a>
-                </div>
-                <div class="off__contact">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/logo/logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetu adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-                <ul class="sidebar__thumd">
-                    <li><a href="#"><img src="images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
-                    <li><a href="#"><img src="images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
-                </ul>
-                <div class="offset__widget">
-                    <div class="offset__single">
-                        <h4 class="offset__title">Language</h4>
-                        <ul>
-                            <li><a href="#"> Engish </a></li>
-                            <li><a href="#"> French </a></li>
-                            <li><a href="#"> German </a></li>
-                        </ul>
-                    </div>
-                    <div class="offset__single">
-                        <h4 class="offset__title">Currencies</h4>
-                        <ul>
-                            <li><a href="#"> USD : Dollar </a></li>
-                            <li><a href="#"> EUR : Euro </a></li>
-                            <li><a href="#"> POU : Pound </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="offset__sosial__share">
-                    <h4 class="offset__title">Follow Us On Social</h4>
-                    <ul class="off__soaial__link">
-                        <li><a class="bg--twitter" href="#"  title="Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
-
-                        <li><a class="bg--instagram" href="#" title="Instagram"><i class="zmdi zmdi-instagram"></i></a></li>
-
-                        <li><a class="bg--facebook" href="#" title="Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
-
-                        <li><a class="bg--googleplus" href="#" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a></li>
-
-                        <li><a class="bg--google" href="#" title="Google"><i class="zmdi zmdi-google"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End Offset MEnu -->
         <!-- Start Cart Panel -->
         <div class="shopping__cart">
             <div class="shopping__cart__inner">
@@ -115,70 +59,68 @@
                     <a href="#"><i class="zmdi zmdi-close"></i></a>
                 </div>
                 <div class="shp__cart__wrap">
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/1.jpg" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$105.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/2.jpg" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">Brone Candle</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$25.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
+                    @if($cart)
+                        <?php
+                        $total = array_reduce($cart, function ($total, $value) {
+                            return $total + $value['price'];
+                        }, 0)
+                        ?>
+                        @foreach($cart as $cartDtl)
+                            <div class="shp__single__product">
+                                <div class="shp__pro__thumb">
+                                    <a href="#">
+                                        <img src="{{asset($cartDtl['image'])}}" alt="product images">
+                                    </a>
+                                </div>
+                                <div class="shp__pro__details">
+                                    <h2>
+                                        <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
+                                    </h2>
+                                    <span class="quantity">{{0}}</span>
+                                    <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
+                                </div>
+                                <div class="remove__btn">
+                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
                 </div>
                 <ul class="shoping__total">
-                    <li class="subtotal">Subtotal:</li>
-                    <li class="total__price">$130.00</li>
+                    <li class="subtotal">Tổng tiền:</li>
+                    <li class="total__price">{{number_format($total)}}</li>
                 </ul>
+                @endif
                 <ul class="shopping__btn">
-                    <li><a href="cart.html">View Cart</a></li>
-                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                    <li><a href="{{route('clients.shopping-cart.index')}}">Giỏ hàng</a></li>
+                    <li class="shp__checkout"><a href="{{route('clients.checkout.index')}}">Thanh toán</a></li>
                 </ul>
             </div>
         </div>
         <!-- End Cart Panel -->
     </div>
     <!-- End Offset Wrapper -->
-    <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-        <div class="ht__bradcaump__wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">About Us</h2>
-                            <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
-                                <span class="brd-separetor">/</span>
-                                <span class="breadcrumb-item active">About Us</span>
-                            </nav>
+    @foreach($slider as $slDtl)
+        <div class="ht__bradcaump__area"
+             style="background: rgba(0, 0, 0, 0) url({{asset($slDtl['image'])}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">About Us</h2>
+                                <nav class="bradcaump-inner">
+                                    <a class="breadcrumb-item" href="index.html">Home</a>
+                                    <span class="brd-separetor">/</span>
+                                    <span class="breadcrumb-item active">About Us</span>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Bradcaump area -->
+    @endforeach
+<!-- End Bradcaump area -->
     <!-- Start Our Store Area -->
     <section class="htc__store__area ptb--120 bg__white">
         <div class="container">
@@ -186,7 +128,10 @@
                 <div class="col-md-12">
                     <div class="section__title section__title--2 text-center">
                         <h2 class="title__line">Welcome To Tmart Store</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat.</p>
                     </div>
                     <div class="store__btn">
                         <a href="#">contact us</a>
@@ -267,7 +212,8 @@
                 <div class="col-md-12">
                     <div class="section__title section__title--2 text-center">
                         <h2 class="title__line">Our Staff</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labo.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut
+                            labo.</p>
                     </div>
                 </div>
             </div>
@@ -348,7 +294,9 @@
     </section>
     <!-- End Our Team Area -->
     <!-- Start Testimonial Area -->
-    <div class="htc__testimonial__area ptb--120" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;" data--black__overlay="6">
+    <div class="htc__testimonial__area ptb--120"
+         style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;"
+         data--black__overlay="6">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -359,7 +307,8 @@
                                 <img src="images/test/client/1.png" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt
+                                    ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
                                 <div class="test__info">
                                     <span><a href="#">Robiul siddikee</a></span>
                                     <span> - </span>
@@ -374,7 +323,8 @@
                                 <img src="images/test/client/2.png" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt
+                                    ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
                                 <div class="test__info">
                                     <span><a href="#">Robiul siddikee</a></span>
                                     <span> - </span>
@@ -389,7 +339,8 @@
                                 <img src="images/test/client/3.png" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt
+                                    ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
                                 <div class="test__info">
                                     <span><a href="#">Robiul siddikee</a></span>
                                     <span> - </span>
@@ -517,14 +468,22 @@
                                 <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
                                 <div class="input__box">
                                     <div id="mc_embed_signup">
-                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <form action="#" method="post" id="mc-embedded-subscribe-form"
+                                              name="mc-embedded-subscribe-form" class="validate" target="_blank"
+                                              novalidate>
                                             <div id="mc_embed_signup_scroll" class="htc__news__inner">
                                                 <div class="news__input">
-                                                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
+                                                    <input type="email" value="" name="EMAIL" class="email"
+                                                           id="mce-EMAIL" placeholder="Email Address" required>
                                                 </div>
                                                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
+                                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                                    <input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
+                                                           tabindex="-1" value=""></div>
+                                                <div class="clearfix subscribe__btn"><input type="submit" value="Send"
+                                                                                            name="subscribe"
+                                                                                            id="mc-embedded-subscribe"
+                                                                                            class="bst__btn btn--white__color">
 
                                                 </div>
                                             </div>

@@ -1,4 +1,8 @@
-<?php $routeName = \Request::route() ? \Request::route()->getName() : ''; ?>
+<?php
+$routeName = \Request::route() ? \Request::route()->getName() : '';
+$cart = \Illuminate\Support\Facades\Session::get('cart');
+?>
+
 <header id="header" class="htc-header header--3 bg__white">
     <!-- Start Mainmenu Area -->
     <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
@@ -125,10 +129,9 @@
                 <!-- End MAinmenu Ares -->
                 <div class="col-md-2 col-sm-4 col-xs-3">
                     <ul class="menu-extra">
-                    <ul class="menu-extra">
                         <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
-                        <li><a href="login-register.html"><span class="ti-user"></span></a></li>
-                        <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
+                        <li><a href="{{route('clients.login')}}"><span class="ti-user"></span></a></li>
+                        <li class="cart__menu"><span class="ti-shopping-cart icon-header-noti icon-header-item" data-notify="{{$cart ? count($cart) : 0}}"></span></li>
                     </ul>
                 </div>
             </div>

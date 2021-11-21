@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,6 +14,7 @@ class ProductController extends Controller
     {
         $attributes = $request->all();
         $category = Category::all();
+        $slider = Slider::where('page', 'product')->get();
 
         $product = Product::query();
         if (!empty($attributes)) {
@@ -36,7 +38,8 @@ class ProductController extends Controller
 
         return view('clients.product.index', [
             'category' => $category,
-            'product'  => $product->get(),
+            'product'  => $product->paginate(16),
+            'slider'   => $slider
         ]);
     }
 

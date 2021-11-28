@@ -10,7 +10,7 @@ class AboutController extends Controller
 
     public function index()
     {
-        $about = About::all();
+        $about = About::first();
         $slider = Slider::where('page', 'about')->get();
         return view('clients.about.index', [
             'about'  => $about,

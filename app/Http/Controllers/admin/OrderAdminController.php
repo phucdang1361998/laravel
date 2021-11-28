@@ -100,8 +100,8 @@ class OrderAdminController extends Controller
                     'product_id'       => $detail['id'],
                     'product_name'     => $detail['name'],
                     'product_price'    => $detail['price'],
-                    'product_quantity' => 1,
-                    'total_price'      => $detail['price'] * 1,
+                    'product_quantity' => $detail['quantity'],
+                    'total_price'      => $detail['price'] * $detail['quantity'],
                     'product_image'    => $detail['image'],
                 ];
             }

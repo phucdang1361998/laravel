@@ -288,6 +288,7 @@
     padding: 0 20px;
     text-transform: uppercase;
     transition: all 0.4s ease 0s;
+    font-family: Calibri;
 }
 .product__filter--7 .product__menu button:first-child {
     padding-left: 0;

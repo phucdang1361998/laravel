@@ -1,6 +1,7 @@
 <?php
 $routeName = \Request::route() ? \Request::route()->getName() : '';
 $cart = \Illuminate\Support\Facades\Session::get('cart');
+
 ?>
 
 <header id="header" class="htc-header header--3 bg__white">

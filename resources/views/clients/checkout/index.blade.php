@@ -154,7 +154,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
 
                             <h2 class="section-title-3" style="margin-bottom: 20px">Phương thức thanh toán</h2>
                             @foreach($payment as $detail)
-                                  <input type="radio" id="payment" name="payment_method" value="{{$detail['id']}}">
+                                  <input type="radio" id="payment" name="payment_method" onclick="check" value="{{$detail['id']}}">
                                   <label for="payment">{{$detail['name']}}</label><br>
                             @endforeach
                             <button type="submit" class="coupon">Đặt hàng</button>
@@ -183,7 +183,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                                 <h2>
                                                     <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                                 </h2>
-                                                <span class="quantity">{{0}}</span>
+                                                <span class="quantity">{{$cartDtl['quantity']}}</span>
                                                 <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                             </div>
                                             <div class="remove__btn">

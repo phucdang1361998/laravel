@@ -77,7 +77,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                     <h2>
                                         <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                     </h2>
-                                    <span class="quantity">{{0}}</span>
+                                    <span class="quantity">{{$cartDtl['quantity']}}</span>
                                     <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                 </div>
                                 <div class="remove__btn">

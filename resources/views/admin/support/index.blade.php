@@ -23,7 +23,6 @@
                                     <td>{{$detail['email']}}</td>
                                     <td>{{$detail['phone']}}</td>
                                     <td>{{$detail['description']}}</td>
-
                                 </tr>
                             @endforeach
                             </tbody>

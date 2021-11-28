@@ -74,7 +74,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                     <h2>
                                         <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                     </h2>
-                                    <span class="quantity">{{0}}</span>
+                                    <span class="quantity">{{$cartDtl['quantity']}}</span>
                                     <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                 </div>
                                 <div class="remove__btn">
@@ -226,9 +226,9 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                         </div>
                                         <div class="product__hover__info">
                                             <ul class="product__action">
-                                                <li><a data-toggle="modal" data-target="#productModal"
+                                                <li><a onclick="" data-toggle="modal" data-target="#productModal"
                                                        title="Quick View"
-                                                       class="quick-view modal-view detail-link" href="#" data-product="{{$proDtl}}"><span
+                                                       class="quick-view modal-view detail-link" href="#"  data-product="{{$proDtl}}"><span
                                                             class="ti-plus"></span></a></li>
                                                 <li><a title="Add TO Cart"
                                                        href="{{route('clients.shopping-cart.insert',['id' => $proDtl])}}"><span
@@ -271,6 +271,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
 </div>
 <!-- Body main wrapper end -->
 <!-- QUICKVIEW PRODUCT -->
+@if($proDtl)
 <div id="quickview-wrapper">
     <!-- Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
@@ -285,12 +286,12 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                         <!-- Start product images -->
                         <div class="product-images">
                             <div class="main-image images">
-                                <img alt="big images" src="images/product/big-img/1.jpg">
+                                <img alt="big images" src="{{asset($proDtl['image'])}}">
                             </div>
                         </div>
                         <!-- end product images -->
                         <div class="product-info">
-                            <h1>Simple Fabric Bags</h1>
+                            <h1>{{$proDtl['name']}}</h1>
                             <div class="rating__and__review">
                                 <ul class="rating">
                                     <li><span class="ti-star"></span></li>
@@ -305,32 +306,13 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                             </div>
                             <div class="price-box-3">
                                 <div class="s-price-box">
-                                    <span class="new-price">$17.20</span>
+                                    <span class="new-price">{{$proDtl['price']}}</span>
                                     <span class="old-price">$45.00</span>
                                 </div>
                             </div>
                             <div class="quick-desc">
                                 Designed for simplicity and made from high quality materials. Its sleek geometry and
                                 material combinations creates a modern look.
-                            </div>
-                            <div class="select__color">
-                                <h2>Select color</h2>
-                                <ul class="color__list">
-                                    <li class="red"><a title="Red" href="#">Red</a></li>
-                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                </ul>
-                            </div>
-                            <div class="select__size">
-                                <h2>Select size</h2>
-                                <ul class="color__list">
-                                    <li class="l__size"><a title="L" href="#">L</a></li>
-                                    <li class="m__size"><a title="M" href="#">M</a></li>
-                                    <li class="s__size"><a title="S" href="#">S</a></li>
-                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                                </ul>
                             </div>
                             <div class="social-sharing">
                                 <div class="widget widget_socialsharing_widget">
@@ -360,6 +342,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
     </div>
     <!-- END Modal -->
 </div>
+@endif
 <script src="{{asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins.js')}}"></script>

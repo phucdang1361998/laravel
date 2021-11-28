@@ -76,11 +76,12 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                     <h2>
                                         <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                     </h2>
-                                    <span class="quantity">{{0}}</span>
+                                    <span class="quantity">{{$cartDtl['quantity']}}</span>
                                     <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                 </div>
                                 <div class="remove__btn">
-                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}"
+                                       title="Remove this item"><i class="zmdi zmdi-close"></i></a>
                                 </div>
                             </div>
                         @endforeach
@@ -380,14 +381,8 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
     </section>
 
     @foreach($category as $cateDtl)
-        <div class="only-banner ptb--100 bg__white">
-            <div class="container">
-                <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/3.jpg" alt="new product"></a>
-                </div>
-            </div>
+        <div class="only-banner ptb--40 bg__white">
         </div>
-
         <section class="htc__product__area bg__white">
             <div class="container">
                 <div class="row">
@@ -398,15 +393,9 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                             </div>
                             <div class="product-categories-menu">
                                 <ul>
-                                    <li><a href="#">awesome Rings</a></li>
-                                    <li><a href="#">Hot Earrings</a></li>
-                                    <li><a href="#">Jewelry Sets</a></li>
-                                    <li><a href="#">Beads Jewelry</a></li>
-                                    <li><a href="#">Men's Watches</a></li>
-                                    <li><a href="#">Women’s Watches</a></li>
-                                    <li><a href="#">Popular Bracelets</a></li>
-                                    <li><a href="#"> Pendant Necklaces</a></li>
-                                    <li><a href="#">Children's Watches</a></li>
+                                    @foreach($category as $detail)
+                                        <li><a href="#">{{$detail['name']}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -450,8 +439,9 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                 <div class="tab-pane active" id="home1">
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
-                                            @foreach($product as $proDtl)
-                                                <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                            @foreach($product->where('product_type_id', $cateDtl['id']) as $proDtl)
+                                                <div
+                                                    class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
                                                     <div class="product">
                                                         <div class="product__inner">
                                                             <div class="pro__thumb">
@@ -466,18 +456,22 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                                                            data-target="#productModal"
                                                                            title="Quick View"
                                                                            class="quick-view modal-view detail-link"
-                                                                           href="#"><span class="ti-plus"></span></a>
+                                                                           href="#"><span
+                                                                                class="ti-plus"></span></a>
                                                                     </li>
-                                                                    <li><a title="Add TO Cart" href="cart.html"><span
+                                                                    <li><a title="Add TO Cart"
+                                                                           href="cart.html"><span
                                                                                 class="ti-shopping-cart"></span></a>
                                                                     </li>
-                                                                    <li><a title="Wishlist" href="wishlist.html"><span
+                                                                    <li><a title="Wishlist"
+                                                                           href="wishlist.html"><span
                                                                                 class="ti-heart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="product__details">
-                                                            <h2><a href="product-details.html">{{$proDtl['name']}}</a>
+                                                            <h2>
+                                                                <a href="product-details.html">{{$proDtl['name']}}</a>
                                                             </h2>
                                                             <ul class="product__price">
                                                                 @if($proDtl['sale_off'])
@@ -501,6 +495,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
             </div>
         </section>
     @endforeach
+    <section class="htc__blog__area bg__white pb--130"></section>
     @include('clients.footer')
 </div>
 <!-- Body main wrapper end -->

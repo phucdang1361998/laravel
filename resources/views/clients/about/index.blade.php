@@ -76,7 +76,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                     <h2>
                                         <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                     </h2>
-                                    <span class="quantity">{{0}}</span>
+                                    <span class="quantity">{{$cartDtl['quantity']}}</span>
                                     <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                 </div>
                                 <div class="remove__btn">
@@ -107,9 +107,9 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">About Us</h2>
+                                <h2 class="bradcaump-title">Giới thiệu</h2>
                                 <nav class="bradcaump-inner">
-                                    <a class="breadcrumb-item" href="index.html">Home</a>
+                                    <a class="breadcrumb-item" href="{{route('clients.index')}}">Trang chủ</a>
                                     <span class="brd-separetor">/</span>
                                     <span class="breadcrumb-item active">About Us</span>
                                 </nav>
@@ -127,7 +127,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
             <div class="row">
                 <div class="col-md-12">
                     <div class="section__title section__title--2 text-center">
-                        <h2 class="title__line">Welcome To Tmart Store</h2>
+                        <h2 class="title__line">{{$about['title']}}</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in

@@ -1,5 +1,6 @@
 <?php
 $cart = \Illuminate\Support\Facades\Session::get('cart');
+
 ?>
     <!doctype html>
 <html class="no-js" lang="en">
@@ -72,11 +73,12 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                     <h2>
                                         <a href="{{route('clients.product.detail',['id'=>$cartDtl['id']])}}">{{$cartDtl['name']}}</a>
                                     </h2>
-                                    <span class="quantity">{{0}}</span>
+                                    <span class="quantity">{{$cartDtl['quantity']}}</span>
                                     <span class="shp__price">{{number_format($cartDtl['price'])}}</span>
                                 </div>
                                 <div class="remove__btn">
-                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                                    <a href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}"
+                                       title="Remove this item"><i class="zmdi zmdi-close"></i></a>
                                 </div>
                             </div>
                         @endforeach
@@ -149,7 +151,7 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                             <td class="product-name"><a href="#">{{$cartDtl['name']}}</a></td>
                                             <td class="product-price"><span
                                                     class="amount">{{number_format($cartDtl['price'])}}</span></td>
-                                            <td class="product-quantity"><input type="number" value="1"/></td>
+                                            <td class="product-quantity">{{$cartDtl['quantity']}}</td>
                                             <td class="product-subtotal">{{number_format($cartDtl['price'])}}</td>
                                             <td class="product-remove"><a
                                                     href="{{route('clients.shopping-cart.insert',['id' => $cartDtl,'delete' => 1])}}">X</a>
@@ -160,19 +162,22 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                 </tbody>
                             </table>
                         </div>
+                        @if(isset($message))
+                            <p style="color: red">{{$message}}</p>
+                        @endif
                         <div class="row">
                             <div class="col-md-8 col-sm-7 col-xs-12">
                                 <div class="buttons-cart">
-{{--                                    <input type="submit" value="Update Cart"/>--}}
+                                    {{--                                    <input type="submit" value="Update Cart"/>--}}
                                     <a href="{{route('clients.product.index')}}">Tiếp tục mua hàng</a>
                                     <a href="{{route('clients.checkout.index')}}">Thanh toán</a>
                                 </div>
-{{--                                <div class="coupon">--}}
-{{--                                    <h3>Coupon</h3>--}}
-{{--                                    <p>Enter your coupon code if you have one.</p>--}}
-{{--                                    <input type="text" placeholder="Coupon code"/>--}}
-{{--                                    <input type="submit" value="Apply Coupon"/>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="coupon">--}}
+                                {{--                                    <h3>Coupon</h3>--}}
+                                {{--                                    <p>Enter your coupon code if you have one.</p>--}}
+                                {{--                                    <input type="text" placeholder="Coupon code"/>--}}
+                                {{--                                    <input type="submit" value="Apply Coupon"/>--}}
+                                {{--                                </div>--}}
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-12">
                                 <div class="cart_totals">
@@ -182,7 +187,8 @@ $cart = \Illuminate\Support\Facades\Session::get('cart');
                                         <tr class="order-total">
                                             <th>Tổng tiền:</th>
                                             <td>
-                                                <strong><span class="amount">{{($cart ? number_format($total) : 0)}} <sup>đ</sup></span></strong>
+                                                <strong><span
+                                                        class="amount">{{($cart ? number_format($total) : 0)}} <sup>đ</sup></span></strong>
                                             </td>
                                         </tr>
                                         </tbody>
